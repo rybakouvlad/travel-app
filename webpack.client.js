@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const WebpackNotifierPlugin = require('webpack-notifier');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpackConfig = require('./webpack.config');
 const ESLintPlugin = require('eslint-webpack-plugin');
-
+// const Dotenv = require('dotenv-webpack');
 
 module.exports = (env, argv) => {
   const watchMode = argv.liveReload || false;
@@ -33,20 +35,20 @@ module.exports = (env, argv) => {
     devServer: {
       contentBase: path.join(__dirname, 'dist'),
       compress: true,
-      port: 4200,
+      port: 4220,
       watchContentBase: true,
       progress: true,
       hot: true,
       open: true,
       historyApiFallback: true,
-      proxy: {
-        '/api': 'http://localhost:3000',
-        '/api/streams': 'http://localhost:8080',
-      },
+      // proxy: {
+      //   '/api': 'http://localhost:3000',
+      //   '/api/streams': 'http://localhost:8080',
+      // },
     },
     resolve: config.resolve,
     module: {
-      rules: [config.modules.js, config.modules.sass, config.modules.img],
+      rules: [config.modules.js, config.modules.sass, config.modules.img, config.modules.css],
     },
     plugins: [
       new ESLintPlugin(),
@@ -54,6 +56,8 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: './src/client/Html/Browser.html',
       }),
+      // new WebpackNotifierPlugin({ alwaysNotify: false }),
+      // new Dotenv(),
     ],
     entry: {
       main: './src/client/Client.tsx',
