@@ -1,11 +1,15 @@
 import React from 'react';
+import { Footer } from '../components/Footer';
+import { Header } from '../components/Header';
+// import { Main } from '../components/Main';
 import '../Style/style.scss';
 
 export const App: React.FC = () => {
   return (
-    <React.Fragment>
-      <h1>APP</h1>
-      <h1 className="test">HELLO WORLD</h1>
-    </React.Fragment>
+    <>
+      <Header />
+      {/* <Main /> */}
+      <Footer />
+    </>
   );
 };
