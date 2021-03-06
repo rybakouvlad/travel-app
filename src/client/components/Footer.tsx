@@ -1,5 +1,6 @@
 import React from 'react';
-import lang from '../language'
+import lang from '../language';
+
 export const Footer: React.FC = () => {
   return (
     <footer>
