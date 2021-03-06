@@ -1,3 +1,14 @@
+//Abstract
+@import 'abstract/constants';
+
+//Base 
+@import 'base/logo';
+
+//Layouts
+@import 'layouts/header';
+@import 'layouts/footer';
+
+
 .test {
   color: green;
 }

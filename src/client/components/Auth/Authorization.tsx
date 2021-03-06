@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { AuthContext } from '../../context/auth.context';
+import React, { useEffect, useState } from 'react';
+import { useAuth } from '../../context/auth.context';
 import { useHttp } from '../../hooks/http.hook';
 import { Button, Form, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { ToastError } from '../ToastError';
 export const Authorization: React.FC = () => {
-  const auth = useContext(AuthContext);
+  const { login } = useAuth();
   const history = useHistory();
   const { loading, request, error, clearError } = useHttp();
   const [form, setForm] = useState({
@@ -26,8 +26,7 @@ export const Authorization: React.FC = () => {
   const loginHandler = async () => {
     try {
       const data = await request('/api/auth/login', 'POST', { ...form });
-      auth.login(data.token, data.userId);
-      console.log(data);
+      login(data.token, data.userId);
       if (data.status) {
         history.push('/');
       }
