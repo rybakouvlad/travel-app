@@ -6,6 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpackConfig = require('./webpack.config');
 const ESLintPlugin = require('eslint-webpack-plugin');
 // const Dotenv = require('dotenv-webpack');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, argv) => {
   const watchMode = argv.liveReload || false;
@@ -56,6 +57,14 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: './src/client/Html/Browser.html',
       }),
+      new CopyPlugin({
+        patterns: [
+          {
+            from: './src/client/locales',
+            to: './locales',
+          },
+        ],
+      })
       // new WebpackNotifierPlugin({ alwaysNotify: false }),
       // new Dotenv(),
     ],

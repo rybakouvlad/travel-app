@@ -8,7 +8,7 @@
     "build": "webpack --config webpack.client.js --mode production",
     "dev": "webpack --config webpack.client.js --mode development",
     "lint": "eslint webdriver-msrc/ --ext .tsx --quiet ",
-    "lint-and-fix": "eslint src/**/*.js src/**/*.tsx --fix",
+    "lint-and-fix": "eslint src/**/*.tsx src/**/*.ts --fix",
     "start": "webpack --config webpack.server.js --mode production && node ./server/main.js"
   },
   "repository": {
@@ -25,10 +25,14 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "express-validator": "^6.10.0",
+    "i18next": "^19.9.1",
+    "i18next-browser-languagedetector": "^6.0.1",
+    "i18next-xhr-backend": "^3.2.2",
     "mongoose": "^5.11.15",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.1",
     "react-dom": "^17.0.1",
+    "react-i18next": "^11.8.8",
     "react-router-dom": "^5.2.0"
   },
   "devDependencies": {
@@ -46,6 +50,7 @@
     "@typescript-eslint/eslint-plugin": "^4.12.0",
     "@typescript-eslint/parser": "^4.12.0",
     "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^8.0.0",
     "cors": "^2.8.5",
     "css-loader": "^4.3.0",
     "dotenv-webpack": "^7.0.1",

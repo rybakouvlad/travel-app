@@ -1,7 +1,8 @@
 import React from 'react';
 import { useAuth } from '../context/auth.context';
-import lang from '../language';
+import { useTranslation } from 'react-i18next';
 export const LogOutButton: React.FC = () => {
   const { logout } = useAuth();
-  return <a onClick={logout}>{lang.logout['en']}</a>;
+  const { t } = useTranslation();
+  return <a onClick={logout}>{t('logout')}</a>;
 };
