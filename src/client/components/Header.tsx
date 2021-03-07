@@ -5,7 +5,6 @@ import { CountryCard } from './CountryCard';
 import Auth from './Auth/Auth';
 import { useAuth } from '../context/auth.context';
 import { LogOutButton } from './LogOutButton';
-// import lang from '../language';
 import { useTranslation } from 'react-i18next';
 import { LanguageSelection } from './LanguageSelection';
 
