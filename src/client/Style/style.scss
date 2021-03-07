@@ -8,11 +8,8 @@
 @import 'layouts/header';
 @import 'layouts/footer';
 
-
-.test {
-  color: green;
-}
-
+//components
+@import 'components/lanSelector';
 
 
 .main_wrapper {
