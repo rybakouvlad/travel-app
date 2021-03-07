@@ -1,3 +1,8 @@
 header {
   height: 10vh;
+  background-color: $footer-background;
+  width: 100%;
+  padding: 1rem 1rem;
+  display: flex;
+  justify-content: space-between;
 }
