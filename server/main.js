@@ -326,6 +326,7 @@ server.use(external_cors_default()());
 server.use(external_express_default().json());
 server.use(external_body_parser_default().json());
 server.use('/api', export_routers);
+server.use('/assets', external_express_default().static('./server/assets/img'));
 server.listen("3333", () => console.log(`Listening on port ${"3333"}`));
 
 /******/ })()

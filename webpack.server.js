@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpackConfig = require('./webpack.config');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
-// const CopyPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, argv) => {
   const modeEnv = argv.mode || 'development';
@@ -24,14 +24,14 @@ module.exports = (env, argv) => {
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin(),
       new Dotenv(),
-      // new CopyPlugin({
-      //   patterns: [
-      //     {
-      //       from: './src/files',
-      //       to: './assets/files',
-      //     },
-      //   ],
-      // }),
+      new CopyPlugin({
+        patterns: [
+          {
+            from: './src/server/assets/img',
+            to: './assets/img',
+          },
+        ],
+      }),
     ],
     resolve: config.resolve,
     module: {

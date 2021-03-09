@@ -10,6 +10,6 @@ server.use(cors());
 server.use(express.json());
 server.use(bodyParser.json());
 server.use('/api', routers);
-// server.use('/assets', express.static('./dist/assets'));
+server.use('/assets', express.static('./server/assets/img'));
 
 server.listen(process.env.SERVER_PORT, () => console.log(`Listening on port ${process.env.SERVER_PORT}`));

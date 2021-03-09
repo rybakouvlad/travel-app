@@ -5,14 +5,13 @@ const router = Router();
 router.get('/all/:lang', async (req: Request, res: Response) => {
   try {
     const data = await Country.find({});
-
     return res.status(200).json(data);
   } catch (e) {
     return res.status(500).json({ message: 'Can not get date.' });
   }
 });
 
-router.get('/country/:lang/:name', async (req: Request, res: Response) => {
+router.get('/:lang/:name', async (req: Request, res: Response) => {
   try {
     const data = await Country.findOne({ alpha2: req.params.name });
     if (!data) {
