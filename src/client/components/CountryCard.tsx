@@ -7,6 +7,7 @@ import { Widgets } from './Widgets/Widgets';
 import { AboutCountry } from './AboutCountry';
 import { VideoComponent } from './VideoComponent';
 import { Loader } from './Loader';
+import { Map } from './Map';
 
 interface IParam {
   id: string;
@@ -41,6 +42,7 @@ export const CountryCard: React.FC = () => {
       <AboutCountry country={country} />
       <FotoGallery alpha2={country.alpha2} />
       <VideoComponent />
+      <Map />
     </>
   );
 };
