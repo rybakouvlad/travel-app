@@ -232,7 +232,7 @@ country_routes_router.get('/all/:lang', (req, res) => country_routes_awaiter(voi
         return res.status(500).json({ message: 'Can not get date.' });
     }
 }));
-country_routes_router.get('/country/:lang/:name', (req, res) => country_routes_awaiter(void 0, void 0, void 0, function* () {
+country_routes_router.get('/:lang/:name', (req, res) => country_routes_awaiter(void 0, void 0, void 0, function* () {
     try {
         const data = yield models_Country.findOne({ alpha2: req.params.name });
         if (!data) {
