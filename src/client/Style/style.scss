@@ -1,17 +1,20 @@
-//Abstract
+@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/carousel';
+// //Abstract
 @import 'abstract/constants';
 
-//Base 
-@import 'base/logo';
+// //Base
+// @import 'base/logo';
 
 //Layouts
 @import 'layouts/header';
 @import 'layouts/footer';
 
 //components
-@import 'components/lanSelector';
 
-
-.main_wrapper {
-  height: 80vh;
-}
+// @import 'components/galery';
+// @import 'components/lanSelector';
+// .main_wrapper {
+//   height: 80vh;
+//   position: relative;
+// }

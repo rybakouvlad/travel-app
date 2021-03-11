@@ -49,7 +49,14 @@ module.exports = (env, argv) => {
     },
     resolve: config.resolve,
     module: {
-      rules: [config.modules.js, config.modules.sass, config.modules.img, config.modules.css],
+      rules: [
+        config.modules.js,
+        config.modules.sass,
+        config.modules.img,
+        config.modules.css,
+        config.modules.font,
+        config.modules.svg,
+      ],
     },
     plugins: [
       new ESLintPlugin(),
@@ -64,7 +71,7 @@ module.exports = (env, argv) => {
             to: './locales',
           },
         ],
-      })
+      }),
       // new WebpackNotifierPlugin({ alwaysNotify: false }),
       // new Dotenv(),
     ],
