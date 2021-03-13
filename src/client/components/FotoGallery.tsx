@@ -1,59 +1,92 @@
-import React from 'react';
-import { Carousel } from 'react-bootstrap';
-// import { useHttp } from '../hooks/http.hook';
+import React, { useState, useEffect, useCallback } from 'react';
+import Slider from 'react-slick';
+import { useHttp } from '../hooks/http.hook';
 
 const baseUrl = 'http://127.0.0.1:3333/assets/county';
+interface IImg {
+  name_ru: string;
+  name_by: string;
+  name_en: string;
+  description_ru: string;
+  description_by: string;
+  description_en: string;
+  path: string;
+}
 
-// interface IImg {
-//   name_ru: string;
-//   name_by: string;
-//   name_en: string;
-//   description_ru: string;
-//   description_by: string;
-//   description_en: string;
-//   path: string;
-// }
+function SampleNextArrow({ className, style, onClick }: any) {
+  return <div className={className} style={{ ...style, display: 'block', background: 'red' }} onClick={onClick} />;
+}
 
-export const FotoGallery: React.FC = () => {
-//   const [images, setImages] = useState<IImg[]>([]);
+export const FotoGallery = () => {
+  const [nav1, setNav1] = useState(null);
+  const [nav2, setNav2] = useState(null);
+  const [slider1, setSlider1] = useState(null);
+  const [slider2, setSlider2] = useState(null);
+  const [images, setImages] = useState<IImg[]>([]);
+  const { request } = useHttp();
+  useEffect(() => {
+    setNav1(slider1);
+    setNav2(slider2);
+  });
 
-//   const { request } = useHttp();
-//   const getImages = useCallback(async () => {
-//     try {
-//       const data = await request('/api/image/all/ru', 'POST', { country: '604880d45c16d44b900d460a' });
-//       setImages(data);
-//       console.log(data);
-//       console.log(images);
-//     } catch (e) {}
-//   }, []);
+  const settingsMain = {
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: true,
+    asNavFor: '.slider-nav',
+  };
 
-//   useEffect(() => {
-//     getImages();
-//   }, []);
-  console.log('GALLERY');
+  const settingsThumbs = {
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    asNavFor: '.slider-for',
+    dots: true,
+    arrows: true,
+    nextArrow: <SampleNextArrow />,
+    centerMode: true,
+    swipeToSlide: true,
+    focusOnSelect: true,
+    centerPadding: '10px',
+    infinite: true,
+  };
+
+  const getImages = useCallback(async () => {
+    try {
+      const data = await request('/api/image/all/ru', 'POST', { country: '604880d45c16d44b900d460a' });
+
+      setImages(data);
+      console.log(data);
+      console.log(images);
+    } catch (e) {}
+  }, []);
+
+  useEffect(() => {
+    getImages();
+  }, []);
+
   return (
-    <Carousel fade>
-      <Carousel.Item interval={3000}>
-        <img className="d-block w-100" src={`${baseUrl}/de/1.jpg`} alt="First slide" />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item interval={500}>
-        <img className="d-block w-100" src={`${baseUrl}/de/2.jpg`} alt="Second slide" />
-        <Carousel.Caption>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img className="d-block w-100" src={`${baseUrl}/de/3.jpg`} alt="Third slide" />
-        <Carousel.Caption>
-          <h3>Third slide label</h3>
-          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
+    <div className="foto-galery">
+      <div className="slider-wrapper">
+        <Slider {...settingsMain} asNavFor={nav2} ref={(slider) => setSlider1(slider)}>
+          {images.map((el, i) => (
+            <div className="slick-slide" key={i}>
+              <h2 className="slick-slide-title">{el.name_en}</h2>
+              <img src={`${baseUrl}/pl/${el.path}`} width="200px" alt={`${el.name_en}`} />
+              <label className="slick-slide-label">{el.description_en}</label>
+            </div>
+          ))}
+        </Slider>
+        <div className="thumbnail-slider-wrap">
+          <Slider {...settingsThumbs} asNavFor={nav1} ref={(slider) => setSlider2(slider)}>
+            {images.map((el) => (
+              <div className="slick-slide" key={el.name_ru}>
+                <img src={`${baseUrl}/pl/${el.path}`} width="200px" alt={`${el.name_en}`} />
+              </div>
+            ))}
+          </Slider>
+        </div>
+      </div>
+    </div>
   );
 };
