@@ -70,10 +70,12 @@ export const FotoGallery = () => {
       <div className="slider-wrapper">
         <Slider {...settingsMain} asNavFor={nav2} ref={(slider) => setSlider1(slider)}>
           {images.map((el, i) => (
-            <div className="slick-slide" key={i}>
-              <h2 className="slick-slide-title">{el.name_en}</h2>
-              <img src={`${baseUrl}/pl/${el.path}`} width="200px" alt={`${el.name_en}`} />
-              <label className="slick-slide-label">{el.description_en}</label>
+            <div className="slick-slide card-slide" key={i}>
+              <img className="card-slide-img" src={`${baseUrl}/pl/${el.path}`} alt={`${el.name_en}`} />
+              <div className="text-slide">
+                <h2 className="slick-slide-title">{el.name_en}</h2>
+                <label className="slick-slide-label">{el.description_en}</label>
+              </div>
             </div>
           ))}
         </Slider>
