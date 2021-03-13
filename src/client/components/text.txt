@@ -1,0 +1,155 @@
+Lazyimport React, { useCallback, useEffect, useState } from 'react';
+import SwiperCore, { Navigation, Pagination, Thumbs, Virtual } from 'swiper';
+
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+// import 'swiper/swiper-bundle.scss';
+import 'swiper/components/navigation/navigation.scss';
+import 'swiper/components/pagination/pagination.scss';
+import 'swiper/components/scrollbar/scrollbar.scss';
+import 'swiper/swiper-bundle.css';
+
+// install Swiper modules
+
+import { useHttp } from '../hooks/http.hook';
+// import { useHttp } from '../hooks/http.hook';
+
+const baseUrl = 'http://127.0.0.1:3333/assets/county';
+interface IImg {
+  name_ru: string;
+  name_by: string;
+  name_en: string;
+  description_ru: string;
+  description_by: string;
+  description_en: string;
+  path: string;
+}
+SwiperCore.use([Navigation, Pagination, Thumbs, Virtual]);
+
+// Params definition
+const params = {
+  modules: [Controller, Pagination, Navigation, Lazy],
+  preloadImages: false,
+  lazy: true,
+  pagination: {
+    el: '.swiper-pagination',
+    type: 'bullets',
+    clickable: true,
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  loop: false,
+  spaceBetween: 30,
+  getSwiper: updateSwiper, // Get swiper instance callback
+};
+const thumbsParams = {
+  modules: [Controller],
+  slideToClickedSlide: true,
+  slidesPerView: 'auto',
+  centeredSlides: true,
+  spaceBetween: 10,
+  getSwiper: updateSwiperThumbs, // Get swiper instance callback
+  style: {
+    width: '100px',
+  },
+};
+
+export const FotoGallery: React.FC = () => {
+  const [images, setImages] = useState<IImg[]>([]);
+  const [seating] = useState({
+    pagination: { clickable: true },
+    scrollbar: { draggable: true },
+  });
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const { request } = useHttp();
+  const getImages = useCallback(async () => {
+    try {
+      const data = await request('/api/image/all/ru', 'POST', { country: '604880d45c16d44b900d460a' });
+
+      setImages(data);
+      console.log(data);
+      console.log(images);
+    } catch (e) {}
+  }, []);
+
+  useEffect(() => {
+    getImages();
+  }, []);
+
+  console.log('GALLERY');
+
+  return (
+    <div className="gallery-wrapper">
+      <Swiper
+        className="carousel"
+        // spaceBetween={0}
+        slidesPerView={1}
+        navigation
+        loop
+        // virtual
+        loopedSlides={6}
+        pagination={seating.pagination}
+        scrollbar={seating.scrollbar}
+        onAfterInit={(swiper) => {
+          // swiper.updateSlides();
+          console.log('BEGIN');
+        }}
+        onInit={(swiper) => {
+          // swiper.update();
+          console.log('!!!', swiper);
+        }}
+        onSwiper={(swiper) => console.log(swiper)}
+        onSlideChange={(slide) => {
+          slide.update();
+          // slide.activeIndex;
+          console.log(slide.activeIndex);
+
+          console.log('click');
+        }}
+        thumbs={{ swiper: thumbsSwiper }}
+        // loop
+      >
+        {images.map((el, i) => {
+          return (
+            <SwiperSlide key={i}>
+              {({ isActive }: { isActive: boolean }) => (
+                <img
+                  style={{ opacity: isActive ? '0.8' : null }}
+                  src={`${baseUrl}/pl/${el.path}`}
+                  alt={`${el.name_en}`}
+                />
+              )}
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+      <Swiper
+        className="carousel"
+        spaceBetween={50}
+        slidesPerView={4}
+        // freeMode
+        onSwiper={(el) => {
+          console.log('ELELEL', el);
+
+          setThumbsSwiper(el);
+        }}
+        watchSlidesVisibility
+        watchSlidesProgress
+        watchOverflow
+        loopedSlides={6}
+        loop
+      >
+        {images.map((el, i) => {
+          return (
+            <SwiperSlide key={i}>
+              <img src={`${baseUrl}/pl/${el.path}`} width="200px" alt={`${el.name_en}`} />
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    </div>
+  );
+};

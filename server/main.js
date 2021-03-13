@@ -292,13 +292,77 @@ country_routes_router.post('/set', (req, res) => country_routes_awaiter(void 0, 
 }));
 /* harmony default export */ const country_routes = (country_routes_router);
 
+;// CONCATENATED MODULE: ./src/server/models/Image.ts
+
+
+const ImageSchema = new external_mongoose_namespaceObject.Schema({
+    name_by: String,
+    name_ru: String,
+    name_en: String,
+    country: { type: external_mongoose_namespaceObject.Schema.Types.ObjectId, ref: 'Country' },
+    path: String,
+    description_by: String,
+    description_ru: String,
+    description_en: String,
+});
+const Image = external_mongoose_default().model('Image', ImageSchema);
+/* harmony default export */ const models_Image = (Image);
+
+;// CONCATENATED MODULE: ./src/server/routers/image.routers.ts
+var image_routers_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+const image_routers_router = (0,external_express_namespaceObject.Router)();
+image_routers_router.post('/all/:lang', (req, res) => image_routers_awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const data = yield models_Image.find({ country: req.body.country });
+        return res.status(200).json(data);
+    }
+    catch (e) {
+        return res.status(500).json({ message: 'Can not get date.' });
+    }
+}));
+image_routers_router.post('/set', (req, res) => image_routers_awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const country = yield models_Country.findOne({ alpha2: req.body.alpha2 });
+        const data = new models_Image({
+            name_ru: req.body.name_ru,
+            name_by: req.body.name_by,
+            name_en: req.body.name_en,
+            description_ru: req.body.description_ru,
+            description_by: req.body.description_by,
+            description_en: req.body.description_en,
+            path: req.body.path,
+            country: country._id,
+        });
+        yield data.save();
+        return res.status(200).json(data);
+    }
+    catch (e) {
+        console.error(e);
+        return res.status(500).json({ message: 'Can not set image.' });
+    }
+}));
+/* harmony default export */ const image_routers = (image_routers_router);
+
 ;// CONCATENATED MODULE: ./src/server/routers/export.routers.ts
+
 
 
 
 const export_routers_router = (0,external_express_namespaceObject.Router)();
 export_routers_router.use('/country', country_routes);
 export_routers_router.use('/auth', auth_routers);
+export_routers_router.use('/image', image_routers);
 /* harmony default export */ const export_routers = (export_routers_router);
 
 ;// CONCATENATED MODULE: external "body-parser"

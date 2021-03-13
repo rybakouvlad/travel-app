@@ -1,17 +1,24 @@
-//Abstract
+@import '~bootstrap/scss/bootstrap';
+// @import '~bootstrap/scss/carousel';
+$slick-font-path: '~slick-carousel/slick/fonts/';
+$slick-loader-path: '~slick-carousel/slick/';
+@import '~slick-carousel/slick/slick.scss';
+@import '~slick-carousel/slick/slick-theme.scss';
+
 @import 'abstract/constants';
+//Base
 
-//Base 
-@import 'base/logo';
-
+@import 'base/base';
+// @import 'base/logo';
 //Layouts
 @import 'layouts/header';
 @import 'layouts/footer';
 
 //components
+
+@import 'components/galery';
 @import 'components/lanSelector';
-
-
 .main_wrapper {
   height: 80vh;
+  position: relative;
 }
