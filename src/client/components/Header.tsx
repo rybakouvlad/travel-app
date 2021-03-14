@@ -7,6 +7,7 @@ import { useAuth } from '../context/auth.context';
 import { LogOutButton } from './LogOutButton';
 import { useTranslation } from 'react-i18next';
 import { LanguageSelection } from './LanguageSelection';
+import { Search } from './Search';
 
 export const Header: React.FC = () => {
   const { token } = useAuth();
@@ -22,6 +23,7 @@ export const Header: React.FC = () => {
           <LanguageSelection />
           <div className="login-wrapper">{!!token ? <LogOutButton /> : <Link to="/login">{t('login')}</Link>}</div>
           <h1>Travel</h1>
+          <Search />
         </div>
       </header>
       <section className="main_wrapper">

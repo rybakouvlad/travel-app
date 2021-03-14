@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { ICountry, useCountry } from '../context/country.context';
 import { FotoGallery } from './FotoGallery';
+import { ScrollToTop } from './ScrollToTop';
 import { Widgets } from './Widgets/Widgets';
 
 interface IParam {
@@ -25,6 +26,7 @@ export const CountryCard: React.FC = () => {
   }
   return (
     <>
+      <ScrollToTop />
       <Widgets currency={country.currency} countryName={country.name_en} />
       <FotoGallery />
     </>
