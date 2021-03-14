@@ -1,5 +1,6 @@
 .foto-galery {
-  max-width: 800px;
+  max-width: 1200px;
+  margin: 30px;
 }
 .center {
   opacity: 0.5;
@@ -10,12 +11,11 @@
   justify-content: center;
   align-content: center;
   .carousel {
-    max-width: 800px;
+    max-width: 600px;
   }
 }
 .thumbnail-slider-wrap {
   margin-top: 15px;
-  height: 85px;
 }
 .thumbnail-slider-wrap .slick-track .slick-slide {
   text-align: center;
@@ -29,9 +29,27 @@
   border-radius: 50px;
 }
 .slick-center {
-  border: 4px double black;
+  img {
+    border: 4px double black;
+  }
 }
 
 .slick-slide {
-  width: min-content;
+  display: flex !important;
+    justify-content: center;
+}
+
+.text-slide{
+  display: flex;
+  flex-direction: column;
+  
+}
+.main-slide{
+  display: flex;
+}
+
+.card-slide{
+  .card-slide-img{
+    max-width: 70%;
+  };
 }
