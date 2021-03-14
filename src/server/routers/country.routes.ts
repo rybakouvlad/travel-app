@@ -19,6 +19,7 @@ router.get('/:lang/:name', async (req: Request, res: Response) => {
     }
     const result = {
       alpha2: data.alpha2,
+      currency: data.currency,
       name: '',
       capital: '',
       description: '',
@@ -61,6 +62,7 @@ router.post('/set', async (req: Request, res: Response) => {
       description_ru: req.body.description_ru,
       description_by: req.body.description_by,
       description_en: req.body.description_en,
+      currency: req.body.currency,
     });
     await data.save();
     return res.status(200).json(data);

@@ -1,6 +1,5 @@
 import React, { Suspense } from 'react';
-import { Footer } from '../components/Footer';
-import { Header } from '../components/Header';
+import { Init } from '../components/Init';
 import { AuthProvider } from '../context/auth.context';
 import '../Style/style.scss';
 import './i18n';
@@ -12,8 +11,7 @@ export const App: React.FC = () => {
       <Suspense fallback={null}>
         <CountryProvider>
           <AuthProvider>
-            <Header />
-            <Footer />
+            <Init />
           </AuthProvider>
         </CountryProvider>
       </Suspense>

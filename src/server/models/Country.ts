@@ -12,6 +12,7 @@ export interface ICountry extends Document {
   description_by: string;
   description_ru: string;
   description_en: string;
+  currency: string;
 }
 
 const CountrySchema: Schema = new Schema({
@@ -25,6 +26,7 @@ const CountrySchema: Schema = new Schema({
   description_by: String,
   description_ru: String,
   description_en: String,
+  currency: String,
 });
 
 const Country = mongoose.model<ICountry>('Country', CountrySchema);
