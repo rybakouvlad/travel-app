@@ -21,7 +21,7 @@ export const Header: React.FC = () => {
           </nav>
           <LanguageSelection />
           <div className="login-wrapper">{!!token ? <LogOutButton /> : <Link to="/login">{t('login')}</Link>}</div>
-        <h1>Travel</h1>
+          <h1>Travel</h1>
         </div>
       </header>
       <section className="main_wrapper">

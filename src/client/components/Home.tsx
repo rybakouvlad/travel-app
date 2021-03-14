@@ -39,7 +39,9 @@ export const Home: React.FC = () => {
               <Link to={`/card/${el.alpha2}`}>
                 <div className="country-description">
                   <span data-countryName={el[`name_${i18next.language}`]}>{el[`name_${i18next.language}`]}</span>
-                  <span data-countryCapital={el[`capital_${i18next.language}`]}>{el[`capital_${i18next.language}`]}</span>
+                  <span data-countryCapital={el[`capital_${i18next.language}`]}>
+                    {el[`capital_${i18next.language}`]}
+                  </span>
                 </div>
                 <img src={`${baseUrl}/${el.alpha2}/${getRandomImgNumber()}.jpg`} alt={el.name_en} />
               </Link>
