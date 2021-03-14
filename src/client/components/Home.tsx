@@ -14,50 +14,73 @@ function getRandomImgNumber() {
   return Math.floor(Math.random() * Math.floor(maxPicturesNumber)) + 1;
 }
 export const Home: React.FC = () => {
-  const { countries } = useCountry();
+  const { countries, isSearch, suitableCountries } = useCountry();
   const [hoverCountry, setHoverCountry] = useState<IHoverCountry>();
   function hoverHandling(event: React.MouseEvent<HTMLElement>) {
     const countryData = event.currentTarget.querySelectorAll('span');
     setHoverCountry({
       img: event.currentTarget.querySelector('img').currentSrc,
-      countryName: countryData[0].getAttribute('data-countryName'),
-      countryCapital: countryData[1].getAttribute('data-countryCapital'),
+      countryName: countryData[0].getAttribute('data-countryname'),
+      countryCapital: countryData[1].getAttribute('data-countrycapital'),
     });
   }
 
   return (
     <>
-      <div className="country-list">
-        {countries.map((el: any, i) => {
-          return (
-            <div
-              className="country-item"
-              data-countryCode={el.alpha2}
-              onMouseOver={(event: React.MouseEvent<HTMLElement>) => hoverHandling(event)}
-              key={i}
-            >
-              <Link to={`/card/${el.alpha2}`}>
-                <div className="country-description">
-                  <span data-countryName={el[`name_${i18next.language}`]}>{el[`name_${i18next.language}`]}</span>
-                  <span data-countryCapital={el[`capital_${i18next.language}`]}>
-                    {el[`capital_${i18next.language}`]}
-                  </span>
-                </div>
-                <img src={`${baseUrl}/${el.alpha2}/${getRandomImgNumber()}.jpg`} alt={el.name_en} />
-              </Link>
+      {/*<div>*/}
+      {isSearch ? (
+        <div className="country-list">
+          {suitableCountries.map((el: any, i) => {
+            return (
+              <div className="country-item" data-countrycode={el.alpha2} key={i}>
+                <Link to={`/card/${el.alpha2}`}>
+                  <div className="country-description">
+                    <span data-countryname={el[`name_${i18next.language}`]}>{el[`name_${i18next.language}`]}</span>
+                    <span data-countrycapital={el[`capital_${i18next.language}`]}>
+                      {el[`capital_${i18next.language}`]}
+                    </span>
+                  </div>
+                  <img src={`${baseUrl}/${el.alpha2}/${getRandomImgNumber()}.jpg`} alt={el.name_en} />
+                </Link>
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="country-list">
+          {countries.map((el: any, i) => {
+            return (
+              <div
+                className="country-item"
+                data-countrycode={el.alpha2}
+                onMouseOver={(event: React.MouseEvent<HTMLElement>) => hoverHandling(event)}
+                key={i}
+              >
+                <Link to={`/card/${el.alpha2}`}>
+                  <div className="country-description">
+                    <span data-countryname={el[`name_${i18next.language}`]}>{el[`name_${i18next.language}`]}</span>
+                    <span data-countrycapital={el[`capital_${i18next.language}`]}>
+                      {el[`capital_${i18next.language}`]}
+                    </span>
+                  </div>
+                  <img src={`${baseUrl}/${el.alpha2}/${getRandomImgNumber()}.jpg`} alt={el.name_en} />
+                </Link>
+              </div>
+            );
+          })}
+          ;
+          {hoverCountry ? (
+            <div className="hover-picture">
+              <div className="country-description">
+                <span>{hoverCountry.countryName}</span>
+                <span>{hoverCountry.countryCapital}</span>
+              </div>
+              <img src={hoverCountry.img} alt={hoverCountry.countryName} />
             </div>
-          );
-        })}
-        {hoverCountry && (
-          <div className="hover-picture">
-            <div className="country-description">
-              <span>{hoverCountry.countryName}</span>
-              <span>{hoverCountry.countryCapital}</span>
-            </div>
-            <img src={hoverCountry.img} alt={hoverCountry.countryName} />
-          </div>
-        )}
-      </div>
+          ) : null}
+        </div>
+      )}
+      {/*</div>*/}
     </>
   );
 };

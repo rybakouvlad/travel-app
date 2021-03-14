@@ -38,13 +38,42 @@ header {
       letter-spacing: 0.06em;
       margin-left: 110px;
     }
-    .form-group{
+    .search-wrapper{
+      width: auto;
       display: flex;
+      align-items: center;
       position: absolute;
       right: 15px;
       bottom: 30px;
-      input {
+      .form-control {
+        border-color: white;
+        &:focus{
+          border-color: white;
+          box-shadow: none !important;
+        }
+      }
+      .clear-btn {
+        background: url("http://127.0.0.1:3333/assets/close-24px.svg");
+        background-repeat: no-repeat;
+        background-color: white;
+        background-position-x: center;
+        background-position-y: center;
+        height: 48px;
+        width: 30px;
+        border-color: white;
         margin-right: 10px;
+        &:hover{
+          background: url("http://127.0.0.1:3333/assets/close-red-24px.svg");
+          background-repeat: no-repeat;
+          background-color: white;
+          background-position-x: center;
+          background-position-y: center;
+          cursor: pointer;
+        }
+      }
+      #basic-addon2{
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
       }
     }
     .search-btn {
@@ -56,6 +85,12 @@ header {
       background-color: #dc3545;
       margin: 0;
       padding: 0;
+      background-position-x: center;
+      background-position-y: center;
+      border-radius: 5px !important;
+      &:hover{
+        transform: scale(1.2);
+      }
     }
   }
   a {

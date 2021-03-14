@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import React, { createContext, Dispatch, SetStateAction, useCallback, useContext, useEffect, useState } from 'react';
 import { useHttp } from '../hooks/http.hook';
 
 export interface ICountry {
@@ -16,6 +16,10 @@ export interface ICountry {
 }
 interface IContext {
   countries: ICountry[];
+  suitableCountries: ICountry[];
+  setSuitableCountries: Dispatch<SetStateAction<ICountry[]>>;
+  isSearch: boolean;
+  setIsSearch: Dispatch<SetStateAction<boolean>>;
   getCountry(alpha2: string): ICountry;
   loading: boolean;
   ready: boolean;
@@ -30,6 +34,8 @@ export const useCountry = () => {
 
 export const Country = ({ children }: IProps) => {
   const [countries, setCountries] = useState<ICountry[]>([]);
+  const [suitableCountries, setSuitableCountries] = useState<ICountry[]>([]);
+  const [isSearch, setIsSearch] = useState(false);
   const { request, loading } = useHttp();
   const [ready, setReady] = useState(false);
   const getData = useCallback(async () => {
@@ -51,7 +57,11 @@ export const Country = ({ children }: IProps) => {
     });
   };
   return (
-    <CountryContext.Provider value={{ ready, countries, getCountry, loading }}>{children}</CountryContext.Provider>
+    <CountryContext.Provider
+      value={{ ready, countries, getCountry, loading, isSearch, setIsSearch, suitableCountries, setSuitableCountries }}
+    >
+      {children}
+    </CountryContext.Provider>
   );
 };
 
