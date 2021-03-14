@@ -206,6 +206,7 @@ const CountrySchema = new external_mongoose_namespaceObject.Schema({
     description_by: String,
     description_ru: String,
     description_en: String,
+    currency: String,
 });
 const Country = external_mongoose_default().model('Country', CountrySchema);
 /* harmony default export */ const models_Country = (Country);
@@ -240,6 +241,7 @@ country_routes_router.get('/:lang/:name', (req, res) => country_routes_awaiter(v
         }
         const result = {
             alpha2: data.alpha2,
+            currency: data.currency,
             name: '',
             capital: '',
             description: '',
@@ -282,6 +284,7 @@ country_routes_router.post('/set', (req, res) => country_routes_awaiter(void 0, 
             description_ru: req.body.description_ru,
             description_by: req.body.description_by,
             description_en: req.body.description_en,
+            currency: req.body.currency,
         });
         yield data.save();
         return res.status(200).json(data);
