@@ -54,10 +54,7 @@ export const FotoGallery = () => {
   const getImages = useCallback(async () => {
     try {
       const data = await request('/api/image/all/ru', 'POST', { country: '604880d45c16d44b900d460a' });
-
       setImages(data);
-      console.log(data);
-      console.log(images);
     } catch (e) {}
   }, []);
 
