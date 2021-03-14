@@ -47,7 +47,6 @@ export const Country = ({ children }: IProps) => {
 
   const getCountry = (alpha2: string): ICountry => {
     return countries.find((el) => {
-      console.log('!!!!', el.alpha2);
       return el.alpha2 == alpha2;
     });
   };

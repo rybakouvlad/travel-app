@@ -19,13 +19,13 @@ export const CountryCard: React.FC = () => {
   useEffect(() => {
     setCountry(getCountry(id));
   }, [getCountry]);
-  console.log('!!!', country);
+
   if (loading) {
     return <h1>LOADIING</h1>;
   }
   return (
     <>
-      <Widgets currency={country.currency} />
+      <Widgets currency={country.currency} countryName={country.name_en} />
       <FotoGallery />
     </>
   );
