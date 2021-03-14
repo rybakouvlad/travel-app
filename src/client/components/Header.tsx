@@ -15,11 +15,14 @@ export const Header: React.FC = () => {
   return (
     <>
       <header>
-        <nav>
-          <Link to="/">LOGO</Link>
-        </nav>
-        <LanguageSelection />
-        <div>{!!token ? <LogOutButton /> : <Link to="/login">{t('login')}</Link>}</div>
+        <div className="header-wrapper">
+          <nav>
+            <Link to="/">LOGO</Link>
+          </nav>
+          <LanguageSelection />
+          <div className="login-wrapper">{!!token ? <LogOutButton /> : <Link to="/login">{t('login')}</Link>}</div>
+        <h1>Travel</h1>
+        </div>
       </header>
       <section className="main_wrapper">
         <Switch>

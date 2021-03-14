@@ -17,8 +17,6 @@ export const Home: React.FC = () => {
   const { countries } = useCountry();
   const [hoverCountry, setHoverCountry] = useState<IHoverCountry>();
   function hoverHandling(event: React.MouseEvent<HTMLElement>) {
-    console.log('&&&&&&', event.currentTarget.querySelector('img').currentSrc);
-    console.log('&&&&&&', event.currentTarget.querySelectorAll('span'));
     const countryData = event.currentTarget.querySelectorAll('span');
     setHoverCountry({
       img: event.currentTarget.querySelector('img').currentSrc,
@@ -29,7 +27,6 @@ export const Home: React.FC = () => {
 
   return (
     <>
-      {/*<img src={`http://127.0.0.1:3333/assets/by.jpeg`} alt="" />*/}
       <div className="country-list">
         {countries.map((el: any, i) => {
           return (

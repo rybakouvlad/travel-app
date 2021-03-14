@@ -1,8 +1,46 @@
 header {
-  height: 10vh;
-  background-color: $footer-background;
+  height: 450px;
+  background-color: #73AFBA;;
   width: 100%;
   padding: 1rem 1rem;
   display: flex;
   justify-content: space-between;
+  font-weight: 900;
+  //font-family: "Roboto Light";
+  .header-wrapper {
+    background: url('http://127.0.0.1:3333/assets/pexels-h-emre-773471 1.png');
+    width: inherit;
+    height: auto;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    nav{
+      position: absolute;
+      top: 20px;
+      left: 20px;
+    }
+    .lan_selector{
+      position: absolute;
+      top: 20px;
+      right: 97px;
+    }
+    .login-wrapper{
+      position: absolute;
+      top: 28px;
+      right: 20px;
+    }
+    h1{
+      color: white;
+      font-weight: 700;
+      font-family: Roboto;
+      font-size: 144px;
+      line-height: 130%;
+      letter-spacing: 0.06em;
+      margin-left: 110px;
+    }
+  }
+  a {
+    text-decoration: none;
+    color: cyan;
+  }
 }
