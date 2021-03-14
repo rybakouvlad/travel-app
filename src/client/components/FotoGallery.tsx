@@ -3,7 +3,7 @@ import Slider from 'react-slick';
 import { useHttp } from '../hooks/http.hook';
 
 const baseUrl = 'http://127.0.0.1:3333/assets/county';
-interface IImg {
+export interface IImg {
   name_ru: string;
   name_by: string;
   name_en: string;

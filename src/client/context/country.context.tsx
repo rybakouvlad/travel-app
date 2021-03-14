@@ -1,5 +1,5 @@
-import React, {createContext, useCallback, useContext, useEffect, useState} from 'react';
-import {useHttp} from "../hooks/http.hook";
+import React, { createContext, useCallback, useContext, useEffect, useState } from 'react';
+import { useHttp } from '../hooks/http.hook';
 
 interface ICountry {
   alpha2: string;
@@ -31,8 +31,8 @@ export const CountryProvider = ({ children }: IProps) => {
     try {
       const data = await request('/api/country/all/ru');
       setCountries(data);
-    } catch (e){
-      console.log('Error: ', e.message)
+    } catch (e) {
+      console.log('Error: ', e.message);
     }
   }, [request]);
   useEffect(() => {
