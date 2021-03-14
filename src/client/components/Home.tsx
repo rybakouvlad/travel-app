@@ -16,6 +16,7 @@ function getRandomImgNumber() {
 export const Home: React.FC = () => {
   const { countries, isSearch, suitableCountries } = useCountry();
   const [hoverCountry, setHoverCountry] = useState<IHoverCountry>();
+  const [imageNumber] = useState<number>(getRandomImgNumber());
   function hoverHandling(event: React.MouseEvent<HTMLElement>) {
     const countryData = event.currentTarget.querySelectorAll('span');
     setHoverCountry({
@@ -40,7 +41,7 @@ export const Home: React.FC = () => {
                       {el[`capital_${i18next.language}`]}
                     </span>
                   </div>
-                  <img src={`${baseUrl}/${el.alpha2}/${getRandomImgNumber()}.jpg`} alt={el.name_en} />
+                  <img src={`${baseUrl}/${el.alpha2}/${imageNumber}.jpg`} alt={el.name_en} />
                 </Link>
               </div>
             );
@@ -63,7 +64,7 @@ export const Home: React.FC = () => {
                       {el[`capital_${i18next.language}`]}
                     </span>
                   </div>
-                  <img src={`${baseUrl}/${el.alpha2}/${getRandomImgNumber()}.jpg`} alt={el.name_en} />
+                  <img src={`${baseUrl}/${el.alpha2}/${imageNumber}.jpg`} alt={el.name_en} />
                 </Link>
               </div>
             );
