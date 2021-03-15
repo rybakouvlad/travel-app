@@ -3,6 +3,8 @@ import { Button, Form, Modal, ProgressBar } from 'react-bootstrap';
 import { ToastCopmponent } from './ToastCopmponent';
 import superagent, { ResponseError, Response } from 'superagent';
 import { useAuth } from '../context/auth.context';
+import { useTranslation } from 'react-i18next';
+
 interface IProps {
   show: boolean;
   onHide: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,6 +20,7 @@ interface authToke {
 
 export const ModalDonwloadImg: React.FC<IProps> = (props: IProps) => {
   const { token } = useAuth();
+  const { t } = useTranslation();
   const [imgFile, setImgFile] = useState(null);
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState(null);
@@ -76,21 +79,22 @@ export const ModalDonwloadImg: React.FC<IProps> = (props: IProps) => {
     <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
       <div>{isLoad ? <ProgressBar now={loadPerCent} label={`${Math.trunc(loadPerCent)}%`} /> : null}</div>
       <Modal.Header closeButton>
-        <Modal.Title id="contained-modal-title-vcenter">Modal heading</Modal.Title>
+        <Modal.Title id="contained-modal-title-vcenter">{t('Profile_upload_window')}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <Form.File id="formcheck-api-custom" custom>
             <Form.File.Input isValid type="file" onChange={loadHandler} />
-            <Form.File.Label data-browse="Button text">Custom file input</Form.File.Label>
-            <Form.Control.Feedback type="valid">You did it!</Form.Control.Feedback>
+            <Form.File.Label data-browse={t('Select a file')}>{t('Click to select a file')}</Form.File.Label>
             {showToast ? <ToastCopmponent show={showToast} message={toastMessage} changeShow={changeShow} /> : null}
           </Form.File>
         </Form>
       </Modal.Body>
-      <Button onClick={submitFileHandler}>Submit</Button>
+      <Button className="btn-modal-donwload" onClick={submitFileHandler}>
+        {t('Download')}
+      </Button>
       <Modal.Footer>
-        <Button onClick={() => props.onHide(false)}>Close</Button>
+        <Button onClick={() => props.onHide(false)}>{t('Close')}</Button>
       </Modal.Footer>
     </Modal>
   );

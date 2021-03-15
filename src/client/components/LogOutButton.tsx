@@ -14,9 +14,9 @@ export const LogOutButton: React.FC = () => {
   const [path, setPath] = useState('new_user.png');
   const popover = (
     <Popover id="popover-basic">
-      <Popover.Content>
+      <Popover.Content className="menu-logout">
         <p onClick={logout}>{t('logout')}</p>
-        <p onClick={() => setModalShow(true)}>Profile</p>
+        <p onClick={() => setModalShow(true)}>{t('upload_picture')}</p>
       </Popover.Content>
     </Popover>
   );
