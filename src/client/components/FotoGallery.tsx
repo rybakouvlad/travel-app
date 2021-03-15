@@ -62,14 +62,16 @@ export const FotoGallery: React.FC<IProps> = (props: IProps) => {
 
   const getImages = useCallback(async () => {
     try {
-      const data = await request('/api/image/all/ru', 'POST', { country: '604880d45c16d44b900d460a' });
-      setImages(data);
+      if (props.alpha2) {
+        const data = await request('/api/image/all/ru', 'POST', { alpha2: props.alpha2 });
+        setImages(data);
+      }
     } catch (e) {}
-  }, []);
+  }, [props.alpha2]);
 
   useEffect(() => {
     getImages();
-  }, []);
+  }, [props.alpha2]);
 
   return (
     <div className="foto-galery">
