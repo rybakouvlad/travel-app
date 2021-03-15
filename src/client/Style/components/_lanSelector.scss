@@ -1,3 +1,6 @@
 .lan_selector {
   width:80px;
+  &:hover{
+    cursor: pointer;
+  }
 }

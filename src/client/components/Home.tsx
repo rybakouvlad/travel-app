@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useCountry } from './../context/country.context';
+import {ICountry, useCountry} from './../context/country.context';
 import i18next from 'i18next';
 
 const baseUrl = 'http://127.0.0.1:3333/assets/county';
@@ -15,8 +15,12 @@ function getRandomImgNumber() {
 }
 export const Home: React.FC = () => {
   const { countries, isSearch, suitableCountries } = useCountry();
-  const [hoverCountry, setHoverCountry] = useState<IHoverCountry>();
   const [imageNumber] = useState<number>(getRandomImgNumber());
+  const [hoverCountry, setHoverCountry] = useState<IHoverCountry>({
+    img: `${baseUrl}/${countries[0].alpha2}/${imageNumber}.jpg`,
+    countryName: countries[0][`name_${i18next.language}` as keyof ICountry],
+    countryCapital: countries[0][`capital_${i18next.language}` as keyof ICountry],
+  });
   function hoverHandling(event: React.MouseEvent<HTMLElement>) {
     const countryData = event.currentTarget.querySelectorAll('span');
     setHoverCountry({
@@ -69,7 +73,6 @@ export const Home: React.FC = () => {
               </div>
             );
           })}
-          ;
           {hoverCountry ? (
             <div className="hover-picture">
               <div className="country-description">

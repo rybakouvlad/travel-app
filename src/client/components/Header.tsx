@@ -18,7 +18,12 @@ export const Header: React.FC = () => {
       <header>
         <div className="header-wrapper">
           <nav>
-            <Link to="/">LOGO</Link>
+            <Link to="/" className="logo-link">
+              <div className="logo-wrapper">
+                <img src="http://127.0.0.1:3333/assets/logo.svg" alt="travel around the world" />
+                <p>Travel around the world</p>
+              </div>
+            </Link>
           </nav>
           <LanguageSelection />
           <div className="login-wrapper">{!!token ? <LogOutButton /> : <Link to="/login">{t('login')}</Link>}</div>
