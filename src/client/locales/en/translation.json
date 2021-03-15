@@ -4,5 +4,11 @@
   "logout": "logout",
   "speed": "speed",
   "humidity": "humidity",
-  "searchPlaceholder": "Russia"
+  "searchPlaceholder": "Russia",
+  "upload_picture": "upload picture",
+  "Profile_upload_window": "Profile upload window",
+  "Click to select a file": "Click to select a file",
+  "Select a file": "Select a file",
+  "Download": "Download",
+  "Close": "Close"      
 }

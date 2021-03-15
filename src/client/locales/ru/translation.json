@@ -4,5 +4,11 @@
   "logout": "выйти",
   "speed": "скорость",
   "humidity": "влажность",
-  "searchPlaceholder": "Россия"
+  "searchPlaceholder": "Россия",
+  "upload_picture": "загузить картинку",
+  "Profile_upload_window": "Окно загрузки картинки в профиль",
+  "Click to select a file": "Нажмите для выбора файла",
+  "Select a file": "Выбрать файл",
+  "Download": "Загрузить",  
+  "Close": "Закрыть" 
 }

@@ -4,5 +4,11 @@
   "logout": "выйсці",
   "speed": "хуткасць",
   "humidity": "вільготнасць",
-  "searchPlaceholder": "Расія"
+  "searchPlaceholder": "Расія",
+  "upload_picture": "загрузіць карцінку",
+  "Profile_upload_window" : "Акно загрузкі карцінкі ў профіль",
+  "Click to select a file": "Націсніце для выбару файла",
+  "Select a file": "Выбраць файл",
+  "Download": "Загрузіць",
+  "Close": "Зачыніць"    
 }
