@@ -1,5 +1,5 @@
 import React from 'react';
-import { Currency } from './Cureent';
+import { Currency } from './Cureency';
 import { DateWidget } from './DateWidget';
 import { Weather } from './Weather';
 interface IProps {

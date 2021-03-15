@@ -8,10 +8,12 @@ interface IProps {
 
 export const AboutCountry: React.FC<IProps> = ({ country }: IProps) => {
   return (
-    <div>
-      <h2>{country[`name_${i18next.language}`]}</h2>
-      <h3>{country[`capital_${i18next.language}`]}</h3>
-      <p>{country[`description_${i18next.language}`]}</p>
+    <div className="about-wrapper">
+      <div className="country-title">
+        <span>{country[`name_${i18next.language}`]}</span>
+        <span>{country[`capital_${i18next.language}`]}</span>
+      </div>
+      <p className="about-country-description">{country[`description_${i18next.language}`]}</p>
     </div>
   );
 };

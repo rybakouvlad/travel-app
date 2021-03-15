@@ -1,6 +1,6 @@
 header {
   height: 450px;
-  background-color: #73afba;;
+  background-color: $color-base;
   width: 100%;
   padding: 1rem 1rem;
   display: flex;
@@ -95,6 +95,6 @@ header {
   }
   a {
     text-decoration: none;
-    color: cyan;
+    color: $color-logo;
   }
 }

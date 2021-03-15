@@ -1,11 +1,11 @@
 .main_wrapper {
-  height: 78vh;
+  height: fit-content;
 }
 .country-list {
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  //grid-template-columns: 1fr 1fr 1fr 1fr;
+  //grid-template-rows: 1fr 1fr 1fr;
   gap: 10px 10px;
   grid-template-areas:
     ". . . ."

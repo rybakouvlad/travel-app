@@ -1,2 +1,9 @@
 $footer-background: rgb(245, 81, 81);
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,700;1,900&display=swap');
+$color-base: #73afba;
+$color-logo: cyan;
+@mixin basicText {
+  font-family: Roboto;
+  line-height: 130%;
+  letter-spacing: 0.06em;
+}

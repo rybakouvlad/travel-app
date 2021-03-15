@@ -1,0 +1,19 @@
+.about-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .country-title{
+    @include basicText;
+    font-size: 48px;
+    span{
+      margin-left: 60px;
+    }
+  }
+  .about-country-description{
+    @include basicText;
+    font-size: 18px;
+    width: 88%;
+    text-align: justify;
+    //height: ;
+  }
+}

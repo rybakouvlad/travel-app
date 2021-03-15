@@ -30,18 +30,22 @@
 }
 .slick-center {
   img {
-    border: 4px double black;
+    border: 4px double $color-base;
   }
 }
 
 .slick-slide {
   display: flex !important;
   justify-content: center;
+  //border: 4px double black;
 }
 
 .text-slide {
   display: flex;
   flex-direction: column;
+  @include basicText;
+  width: 255px;
+  text-align: justify;
 }
 .main-slide {
   display: flex;
@@ -50,10 +54,24 @@
 .card-slide {
   .card-slide-img {
     max-width: 70%;
+    margin-right: 30px;
   }
 }
 
-.slick-prev:before,
-.slick-next:before {
-  color: #73afba;
+.slick-arrow{
+  &:hover{
+    transform: scale(1.6);
+  }
+}
+.slick-next{
+  right: 0px;
+  &:before {
+    color: $color-base;
+  }
+}
+.slick-prev{
+  left: 0px;
+  &:before {
+    color: $color-base;
+  }
 }
