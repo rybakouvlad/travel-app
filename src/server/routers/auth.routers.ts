@@ -3,6 +3,9 @@ import { check, validationResult, Result, ValidationError } from 'express-valida
 import bcrypt from 'bcryptjs';
 import User from '../models/Users';
 import createJWToken from '../utils/createJWToken';
+import auth from '../auth.middleware';
+import shortid from 'shortid';
+import { UploadedFile } from 'express-fileupload';
 
 const router = Router();
 
@@ -100,6 +103,40 @@ router.post('/getUserLogin', async (req: Request, res: Response) => {
     const user = await User.findOne({ _id: req.body.userId });
 
     return res.json(user.login);
+  } catch (e) {
+    return res.status(500).json({ message: 'Can not get user.' });
+  }
+});
+
+router.post('/upload', auth, async (req: Request, res: Response) => {
+  const user = await User.findOne({ _id: req.user._id });
+  try {
+    if (!req.files || Object.keys(req.files).length === 0) {
+      return res.status(400).send('No files were uploaded.');
+    }
+
+    const sampleFile = req.files.file as UploadedFile;
+    const fileName = shortid.generate() + '.jpg';
+    const uploadPath = `${process.env.USER_FILE_PATH}` + '/' + fileName;
+
+    sampleFile.mv(uploadPath, async function (err) {
+      if (err) {
+        return res.status(500).send(err);
+      }
+
+      user.filepath = fileName;
+
+      await user.save();
+      res.status(200).send('File uploaded!');
+    });
+  } catch (error) {}
+});
+
+router.post('/getImg', auth, async (req: Request, res: Response) => {
+  try {
+    const user = await User.findOne({ _id: req.user._id });
+
+    return res.json(user.filepath);
   } catch (e) {
     return res.status(500).json({ message: 'Can not get user.' });
   }

@@ -63,6 +63,10 @@ const UserSchema = new external_mongoose_namespaceObject.Schema({
     },
     password: String,
     login: String,
+    filepath: {
+        type: String,
+        unique: true,
+    },
 }, {
     timestamps: true,
 });
@@ -92,6 +96,30 @@ const external_lodash_namespaceObject = require("lodash");;
     return token;
 });
 
+;// CONCATENATED MODULE: ./src/server/auth.middleware.tsx
+
+const auth = (req, res, next) => {
+    if (req.method === 'OPTIONS') {
+        return next();
+    }
+    try {
+        const token = req.headers.authorization.split(' ')[1];
+        if (!token) {
+            return res.status(401).json({ message: 'Auth error' });
+        }
+        const decoded = external_jsonwebtoken_default().verify(token, "UpFJfpWKYteH5rMHSxst");
+        req.user = decoded.data._doc;
+        next();
+    }
+    catch (e) {
+        return res.status(401).json({ message: 'Auth error' });
+    }
+};
+/* harmony default export */ const auth_middleware = (auth);
+
+;// CONCATENATED MODULE: external "shortid"
+const external_shortid_namespaceObject = require("shortid");;
+var external_shortid_default = /*#__PURE__*/__webpack_require__.n(external_shortid_namespaceObject);
 ;// CONCATENATED MODULE: ./src/server/routers/auth.routers.ts
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -102,6 +130,8 @@ var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _argume
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+
+
 
 
 
@@ -185,6 +215,38 @@ router.post('/getUserLogin', (req, res) => __awaiter(void 0, void 0, void 0, fun
     try {
         const user = yield Users.findOne({ _id: req.body.userId });
         return res.json(user.login);
+    }
+    catch (e) {
+        return res.status(500).json({ message: 'Can not get user.' });
+    }
+}));
+router.post('/upload', auth_middleware, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const user = yield Users.findOne({ _id: req.user._id });
+    try {
+        if (!req.files || Object.keys(req.files).length === 0) {
+            return res.status(400).send('No files were uploaded.');
+        }
+        const sampleFile = req.files.file;
+        const fileName = external_shortid_default().generate() + '.jpg';
+        const uploadPath = `${"./server/assets/img/users"}` + '/' + fileName;
+        sampleFile.mv(uploadPath, function (err) {
+            return __awaiter(this, void 0, void 0, function* () {
+                if (err) {
+                    return res.status(500).send(err);
+                }
+                user.filepath = fileName;
+                yield user.save();
+                res.status(200).send('File uploaded!');
+            });
+        });
+    }
+    catch (error) { }
+}));
+router.post('/getImg', auth_middleware, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(req.user);
+    try {
+        const user = yield Users.findOne({ _id: req.user._id });
+        return res.json(user.filepath);
     }
     catch (e) {
         return res.status(500).json({ message: 'Can not get user.' });
@@ -375,6 +437,9 @@ var external_body_parser_default = /*#__PURE__*/__webpack_require__.n(external_b
 ;// CONCATENATED MODULE: external "cors"
 const external_cors_namespaceObject = require("cors");;
 var external_cors_default = /*#__PURE__*/__webpack_require__.n(external_cors_namespaceObject);
+;// CONCATENATED MODULE: external "express-fileupload"
+const external_express_fileupload_namespaceObject = require("express-fileupload");;
+var external_express_fileupload_default = /*#__PURE__*/__webpack_require__.n(external_express_fileupload_namespaceObject);
 ;// CONCATENATED MODULE: ./src/server/mongo.config.ts
 
 external_mongoose_default().connect("mongodb+srv://student:1234qwer@cluster0.n1cm5.mongodb.net/app?retryWrites=true&w=majority", {
@@ -389,10 +454,12 @@ external_mongoose_default().connect("mongodb+srv://student:1234qwer@cluster0.n1c
 
 
 
+
 const server = external_express_default()();
 server.use(external_cors_default()());
 server.use(external_express_default().json());
 server.use(external_body_parser_default().json());
+server.use(external_express_fileupload_default()());
 server.use('/api', export_routers);
 server.use('/assets', external_express_default().static('./server/assets/img'));
 server.listen("3333", () => console.log(`Listening on port ${"3333"}`));

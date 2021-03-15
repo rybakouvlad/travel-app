@@ -6,6 +6,7 @@ export interface IUser extends Document {
   email: string;
   password: string;
   login: string;
+  filepath: string;
 }
 
 const UserSchema: Schema = new Schema(
@@ -18,6 +19,10 @@ const UserSchema: Schema = new Schema(
     },
     password: String,
     login: String,
+    filepath: {
+      type: String,
+      unique: true,
+    },
   },
   {
     timestamps: true,
