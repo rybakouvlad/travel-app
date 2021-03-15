@@ -4,6 +4,7 @@ import { ICountry, useCountry } from '../context/country.context';
 import { FotoGallery } from './FotoGallery';
 import { ScrollToTop } from './ScrollToTop';
 import { Widgets } from './Widgets/Widgets';
+import { AboutCountry } from './AboutCountry';
 
 interface IParam {
   id: string;
