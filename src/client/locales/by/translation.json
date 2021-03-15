@@ -2,5 +2,7 @@
   "country": "Беларусь",
   "login": "увайсці",
   "logout": "выйсці",
+  "speed": "хуткасць",
+  "humidity": "вільготнасць",
   "searchPlaceholder": "Расія"
 }

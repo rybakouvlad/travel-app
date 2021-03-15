@@ -14,8 +14,10 @@ export const CountryCard: React.FC = () => {
   const { id } = useParams<IParam>();
   const [country, setCountry] = useState<ICountry>({
     currency: '',
+    name_en: '',
+    capital_en: '',
+    alpha2: '',
   });
-  // console.log('COUNRY', getCountry(id));
 
   useEffect(() => {
     setCountry(getCountry(id));
@@ -27,8 +29,14 @@ export const CountryCard: React.FC = () => {
   return (
     <>
       <ScrollToTop />
-      <Widgets currency={country.currency} countryName={country.name_en} />
-      <FotoGallery />
+      <Widgets
+        currency={country.currency}
+        countryName={country.name_en}
+        capital_en={country.capital_en}
+        alpha2={country.alpha2}
+      />
+      <AboutCountry country={country} />
+      <FotoGallery alpha2={country.alpha2} />
     </>
   );
 };

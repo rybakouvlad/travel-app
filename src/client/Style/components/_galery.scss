@@ -36,20 +36,24 @@
 
 .slick-slide {
   display: flex !important;
-    justify-content: center;
+  justify-content: center;
 }
 
-.text-slide{
+.text-slide {
   display: flex;
   flex-direction: column;
-  
 }
-.main-slide{
+.main-slide {
   display: flex;
 }
 
-.card-slide{
-  .card-slide-img{
+.card-slide {
+  .card-slide-img {
     max-width: 70%;
-  };
+  }
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: #73afba;
 }
