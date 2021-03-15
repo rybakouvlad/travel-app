@@ -2,5 +2,7 @@
   "country": "Belarus",
   "login": "login",
   "logout": "logout",
+  "speed": "speed",
+  "humidity": "humidity",
   "searchPlaceholder": "Russia"
 }

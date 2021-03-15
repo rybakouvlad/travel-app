@@ -15,8 +15,6 @@ export const Header: React.FC = () => {
   const { isExact } = useRouteMatch('/');
   return (
     <>
-      {console.log('!!!!!!', isExact)}
-
       <header>
         <div className="header-wrapper">
           <nav>

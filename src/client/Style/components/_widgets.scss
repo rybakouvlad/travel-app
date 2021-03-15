@@ -1,0 +1,28 @@
+.time-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.widgets-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .weather {
+    display: flex;
+    justify-content: space-between;
+    .weather__container {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      justify-content: space-between;
+      margin-left: 10px;
+      img {
+        width: 45px;
+      }
+    }
+    .weather__container div {
+      font-size: 14px;
+    }
+  }
+  

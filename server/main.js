@@ -327,7 +327,8 @@ var image_routers_awaiter = (undefined && undefined.__awaiter) || function (this
 const image_routers_router = (0,external_express_namespaceObject.Router)();
 image_routers_router.post('/all/:lang', (req, res) => image_routers_awaiter(void 0, void 0, void 0, function* () {
     try {
-        const data = yield models_Image.find({ country: req.body.country });
+        const country = yield models_Country.findOne({ alpha2: req.body.alpha2 });
+        const data = yield models_Image.find({ country: country._id });
         return res.status(200).json(data);
     }
     catch (e) {

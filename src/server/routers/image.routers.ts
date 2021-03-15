@@ -5,7 +5,8 @@ const router = Router();
 
 router.post('/all/:lang', async (req: Request, res: Response) => {
   try {
-    const data = await Image.find({ country: req.body.country });
+    const country = await Country.findOne({ alpha2: req.body.alpha2 });
+    const data = await Image.find({ country: country._id });
     return res.status(200).json(data);
   } catch (e) {
     return res.status(500).json({ message: 'Can not get date.' });
