@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, FormControl, InputGroup } from 'react-bootstrap';
-import { useCountry } from '../context/country.context';
+import { ICountry, useCountry } from '../context/country.context';
 import i18next from 'i18next';
 import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -16,10 +16,10 @@ export const Search: React.FC = () => {
     if (event.target.value !== '') {
       setIsSearch(true);
       setSuitableCountries(
-        countries.filter((el: any) => {
+        countries.filter((el: ICountry) => {
           return (
-            el[`name_${i18next.language}`].toLowerCase().includes(event.target.value.toLowerCase()) ||
-            el[`capital_${i18next.language}`].toLowerCase().includes(event.target.value.toLowerCase())
+            el[`name_${i18next.language}` as keyof ICountry].toLowerCase().includes(event.target.value.toLowerCase()) ||
+            el[`capital_${i18next.language}` as keyof ICountry].toLowerCase().includes(event.target.value.toLowerCase())
           );
         }),
       );

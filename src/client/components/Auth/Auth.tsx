@@ -38,7 +38,7 @@ export const Auth: FC = () => {
   };
 
   return (
-    <div className="login-wrapper">
+    <div className="login-form-wrapper">
       {textHelp.isStatus ? <Register changeStatus={changeStatus} /> : <Authorization />}
 
       <h6>

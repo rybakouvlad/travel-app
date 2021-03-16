@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {ICountry, useCountry} from './../context/country.context';
+import { ICountry, useCountry } from './../context/country.context';
 import i18next from 'i18next';
 
 const baseUrl = 'http://127.0.0.1:3333/assets/county';
@@ -35,14 +35,16 @@ export const Home: React.FC = () => {
       {/*<div>*/}
       {isSearch ? (
         <div className="country-list">
-          {suitableCountries.map((el: any, i) => {
+          {suitableCountries.map((el: ICountry, i) => {
             return (
               <div className="country-item" data-countrycode={el.alpha2} key={i}>
                 <Link to={`/card/${el.alpha2}`}>
                   <div className="country-description">
-                    <span data-countryname={el[`name_${i18next.language}`]}>{el[`name_${i18next.language}`]}</span>
-                    <span data-countrycapital={el[`capital_${i18next.language}`]}>
-                      {el[`capital_${i18next.language}`]}
+                    <span data-countryname={el[`name_${i18next.language}` as keyof ICountry]}>
+                      {el[`name_${i18next.language}` as keyof ICountry]}
+                    </span>
+                    <span data-countrycapital={el[`capital_${i18next.language}` as keyof ICountry]}>
+                      {el[`capital_${i18next.language}` as keyof ICountry]}
                     </span>
                   </div>
                   <img src={`${baseUrl}/${el.alpha2}/${imageNumber}.jpg`} alt={el.name_en} />
@@ -53,7 +55,7 @@ export const Home: React.FC = () => {
         </div>
       ) : (
         <div className="country-list">
-          {countries.map((el: any, i) => {
+          {countries.map((el: ICountry, i) => {
             return (
               <div
                 className="country-item"
@@ -63,9 +65,11 @@ export const Home: React.FC = () => {
               >
                 <Link to={`/card/${el.alpha2}`}>
                   <div className="country-description">
-                    <span data-countryname={el[`name_${i18next.language}`]}>{el[`name_${i18next.language}`]}</span>
-                    <span data-countrycapital={el[`capital_${i18next.language}`]}>
-                      {el[`capital_${i18next.language}`]}
+                    <span data-countryname={el[`name_${i18next.language}` as keyof ICountry]}>
+                      {el[`name_${i18next.language}` as keyof ICountry]}
+                    </span>
+                    <span data-countrycapital={el[`capital_${i18next.language}` as keyof ICountry]}>
+                      {el[`capital_${i18next.language}` as keyof ICountry]}
                     </span>
                   </div>
                   <img src={`${baseUrl}/${el.alpha2}/${imageNumber}.jpg`} alt={el.name_en} />
