@@ -1,4 +1,5 @@
 @import '~bootstrap/scss/bootstrap';
+
 $slick-font-path: '~slick-carousel/slick/fonts/';
 $slick-loader-path: '~slick-carousel/slick/';
 @import '~slick-carousel/slick/slick.scss';
@@ -8,7 +9,7 @@ $slick-loader-path: '~slick-carousel/slick/';
 //Base
 
 @import 'base/base';
- @import 'base/logo';
+@import 'base/logo';
 //Layouts
 @import 'layouts/header';
 @import 'layouts/footer';
@@ -22,6 +23,7 @@ $slick-loader-path: '~slick-carousel/slick/';
 @import 'components/logOut';
 @import 'components/raiting';
 @import 'components/about';
+@import 'components/login';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,400;1,700;1,900&display=swap');
 
 .main_wrapper {
