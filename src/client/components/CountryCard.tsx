@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { ICountry, useCountry } from '../context/country.context';
 import { FotoGallery } from './FotoGallery';
+import MapCountry from "./MapOnSite/MapCountry"
 import { ScrollToTop } from './ScrollToTop';
 import { Widgets } from './Widgets/Widgets';
 import { AboutCountry } from './AboutCountry';
@@ -42,7 +43,7 @@ export const CountryCard: React.FC = () => {
       <AboutCountry country={country} />
       <FotoGallery alpha2={country.alpha2} />
       <VideoComponent />
-      <Map />
+      <MapCountry />
     </>
   );
 };
