@@ -1,39 +1,44 @@
 .main_wrapper {
   height: fit-content;
 }
+
 .country-list {
   height: 100%;
   display: grid;
-  //grid-template-columns: 1fr 1fr 1fr 1fr;
-  //grid-template-rows: 1fr 1fr 1fr;
   gap: 10px 10px;
   grid-template-areas:
     ". . . ."
     "p p p p"
     ". . . .";
-  .country-item{
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  margin: 10px;
+
+  .country-item {
     position: relative;
-    margin: 10px 0;
     height: fit-content;
+    margin: 5px 0;
     border-radius: 10px;
-    &:hover{
+
+    &:hover {
       transform: scale(1.02);
       box-shadow: 0px 0px 20px black;
     }
-    img{
+
+    img {
       width: 100%;
-      //height: 100%;
       border-radius: 5px;
     }
   }
 }
-.country-description{
+
+.country-description {
   position: absolute;
   display: flex;
   width: 100%;
   flex-direction: column;
   background: rgba(115, 175, 186, 0.47);
-  span{
+
+  span {
     font-size: 30px;
     font-weight: bold;
     line-height: 130%;
@@ -45,10 +50,46 @@
 }
 
 .hover-picture {
-  grid-area: p;
+  position: relative;
   display: flex;
-  img{
+  grid-area: p;
+
+  img {
     width: 100%;
     height: 516px;
+  }
+}
+
+@media (min-width: 670px) and (max-width: 970px) {
+  .country-list {
+    grid-template-areas:
+        ". ."
+        ". ."
+        ". ."
+        ". .";
+    gap: 5px 10px;
+    grid-template-columns: 1fr 1fr;
+  }
+  .hover-picture {
+    display: none;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 669px) {
+  .country-list {
+    grid-template-areas:
+        "."
+        "."
+        "."
+        "."
+  "."
+  "."
+  "."
+  ".";
+    grid-template-columns: 1fr;
+    gap: 5px 10px;
+  }
+  .hover-picture {
+    display: none;
   }
 }

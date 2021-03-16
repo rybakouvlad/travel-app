@@ -1,19 +1,42 @@
-.about-wrapper{
+.about-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  .country-title{
+
+  .country-title {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
     @include basicText;
     font-size: 48px;
-    span{
-      margin-left: 60px;
-    }
+    font-weight: 700;
   }
-  .about-country-description{
+
+  .about-country-description {
+    width: 88%;
     @include basicText;
     font-size: 18px;
-    width: 88%;
     text-align: justify;
-    //height: ;
   }
+}
+
+@media (min-width: 450px) and (max-width: 520px) {
+  .about-wrapper {
+    .country-title {
+      font-size: 40px;
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 449px) {
+  .about-wrapper {
+    .country-title {
+      font-size: 40px;
+    }
+
+    .about-country-description {
+      font-size: 16px;
+    }
+  }
+
 }

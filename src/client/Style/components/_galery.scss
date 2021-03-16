@@ -2,24 +2,30 @@
   max-width: 1200px;
   margin: 30px;
 }
+
 .center {
   opacity: 0.5;
 }
+
 .gallery-wrapper {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-content: center;
+
   .carousel {
     max-width: 600px;
   }
 }
+
 .thumbnail-slider-wrap {
   margin-top: 15px;
 }
+
 .thumbnail-slider-wrap .slick-track .slick-slide {
   text-align: center;
 }
+
 .thumbnail-slider-wrap .slick-track .slick-slide img {
   width: 70%;
 }
@@ -28,6 +34,7 @@
   opacity: 1 !important;
   border-radius: 50px;
 }
+
 .slick-center {
   img {
     border: 4px double $color-base;
@@ -37,16 +44,16 @@
 .slick-slide {
   display: flex !important;
   justify-content: center;
-  //border: 4px double black;
 }
 
 .text-slide {
   display: flex;
   flex-direction: column;
-  @include basicText;
   width: 255px;
+  @include basicText;
   text-align: justify;
 }
+
 .main-slide {
   display: flex;
 }
@@ -58,20 +65,76 @@
   }
 }
 
-.slick-arrow{
-  &:hover{
+.slick-next {
+  right: 0px;
+
+  &:before {
+    color: $color-base;
+  }
+
+  &:hover {
     transform: scale(1.6);
   }
 }
-.slick-next{
-  right: 0px;
+
+.slick-prev {
+  left: 0px;
+
   &:before {
     color: $color-base;
+  }
+
+  &:hover {
+    transform: scale(1.6);
   }
 }
-.slick-prev{
-  left: 0px;
-  &:before {
-    color: $color-base;
+
+.slick-slider {
+  display: flex;
+  justify-content: space-around;
+}
+
+.slick-list {
+  width: 90%;
+}
+
+@media (min-width: 650px) and (max-width: 850px) {
+  .card-slide {
+    .card-slide-img {
+      max-width: 63% !important;
+      margin-right: 10px !important;
+    }
   }
+}
+
+@media (min-width: 320px) and (max-width: 649px) {
+  .card-slide {
+    flex-direction: column;
+    align-items: center;
+
+    .card-slide-img {
+      max-width: 98% !important;
+      margin: 0px !important;
+    }
+
+    .text-slide {
+      width: 90%;
+      padding: 10px;
+    }
+
+    .slick-slide-title {
+      margin-top: 10px;
+      font-size: 17px;
+    }
+
+    .slick-slide-label {
+      font-size: 14px;
+    }
+  }
+  .slick-prev, .slick-next {
+    &:hover {
+      transform: none;
+    }
+  }
+
 }
