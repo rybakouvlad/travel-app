@@ -44,7 +44,6 @@ export const Country = ({ children }: IProps) => {
       const data = await request('/api/country/all/ru');
       setCountries(data);
       setReady(true);
-      console.log(data);
     } catch (e) {
       console.log('Error: ', e.message);
     }
