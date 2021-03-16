@@ -13,43 +13,6 @@ router.post('/all/:lang', async (req: Request, res: Response) => {
   }
 });
 
-// router.get('/:lang/:name', async (req: Request, res: Response) => {
-//   try {
-//     const data = await Image.findOne({ alpha2: req.params.name });
-//     if (!data) {
-//       return res.status(500).json({ message: 'Can not get date.' });
-//     }
-//     const result = {
-//       alpha2: data.alpha2,
-//       name: '',
-//       capital: '',
-//       description: '',
-//     };
-//     switch (req.params.lang) {
-//       case 'ru':
-//         result.name = data.name_ru;
-//         result.capital = data.capital_ru;
-//         result.description = data.description_ru;
-//         break;
-//       case 'by':
-//         result.name = data.name_by;
-//         result.capital = data.capital_by;
-//         result.description = data.description_by;
-//         break;
-//       case 'en':
-//         result.name = data.name_en;
-//         result.capital = data.capital_en;
-//         result.description = data.description_en;
-//         break;
-//       default:
-//         break;
-//     }
-//     return res.status(200).json(result);
-//   } catch (e) {
-//     return res.status(500).json({ message: 'Can not get date.' });
-//   }
-// });
-
 router.post('/set', async (req: Request, res: Response) => {
   try {
     const country = await Country.findOne({ alpha2: req.body.alpha2 });

@@ -427,6 +427,10 @@ const RaitingSchema = new external_mongoose_namespaceObject.Schema({
     comment: String,
     image: { type: external_mongoose_namespaceObject.Schema.Types.ObjectId, ref: 'Image' },
     user: { type: external_mongoose_namespaceObject.Schema.Types.ObjectId, ref: 'User' },
+    login: String,
+    filepath: String,
+}, {
+    timestamps: true,
 });
 const Raiting = external_mongoose_default().model('Raiting', RaitingSchema);
 /* harmony default export */ const models_Raiting = (Raiting);
@@ -445,14 +449,15 @@ var raiting_routers_awaiter = (undefined && undefined.__awaiter) || function (th
 
 
 
+
 const raiting_routers_router = (0,external_express_namespaceObject.Router)();
 raiting_routers_router.post('/getAll', (req, res) => raiting_routers_awaiter(void 0, void 0, void 0, function* () {
     try {
-        console.log(req.body.imageId);
-        const raitings = yield models_Raiting.find({ image: req.body.imageId });
+        const raitings = yield models_Raiting.find({ image: req.body.imageId }).populate({ path: 'user', model: Users });
         return res.json(raitings);
     }
     catch (e) {
+        console.log(e);
         return res.status(500).json({ message: 'Can not get raitings' });
     }
 }));
@@ -471,6 +476,8 @@ raiting_routers_router.post('/set', auth_middleware, [(0,external_express_valida
             comment: req.body.comment,
             image: req.body.imageId,
             user: req.user._id,
+            login: req.user.login,
+            filepath: req.user.filepath,
         });
         yield raiting.save();
         res.status(201).json({ message: 'Raiting created.' });

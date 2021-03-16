@@ -13,9 +13,6 @@ export const Search: React.FC = () => {
   const history = useHistory();
   function changeHandler(event: React.ChangeEvent<HTMLInputElement>) {
     setSearchValue(event.target.value);
-    console.log(event);
-    console.log(searchValue);
-    console.log(event.target);
     if (event.target.value !== '') {
       setIsSearch(true);
       setSuitableCountries(

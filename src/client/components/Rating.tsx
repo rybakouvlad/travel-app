@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AllRaiting } from './AllRaiting';
 import { IImg } from './FotoGallery';
 import { SetRaiting } from './SetRaiting';
@@ -10,11 +10,11 @@ export const Raiting: React.FC<IProps> = (props: IProps) => {
   if (!props.slide) {
     return <h1>Loading</h1>;
   }
-  console.log('RAITING', props.slide._id);
+  const [refreash, setRefreash] = useState(false);
   return (
     <div className="wrapper-raiting">
-      <SetRaiting imageId={props.slide._id} />
-      <AllRaiting imageId={props.slide._id} />
+      <SetRaiting imageId={props.slide._id} setRefreash={setRefreash} />
+      <AllRaiting imageId={props.slide._id} refresh={refreash} setRefreash={setRefreash} />
     </div>
   );
 };

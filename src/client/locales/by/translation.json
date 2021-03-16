@@ -6,9 +6,12 @@
   "humidity": "вільготнасць",
   "searchPlaceholder": "Расія",
   "upload_picture": "загрузіць карцінку",
-  "Profile_upload_window" : "Акно загрузкі карцінкі ў профіль",
+  "Profile_upload_window": "Акно загрузкі карцінкі ў профіль",
   "Click to select a file": "Націсніце для выбару файла",
   "Select a file": "Выбраць файл",
   "Download": "Загрузіць",
-  "Close": "Зачыніць"    
+  "Close": "Зачыніць",
+  "No comments and ratings": "Без каментароў і ацэнак",
+  "Your comment": "Ваш каментар",
+  "Add": "Дадаць"  
 }

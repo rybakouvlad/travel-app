@@ -3,8 +3,9 @@ import starEmpty from '../assets/star_empty.svg';
 import starFull from '../assets/star_full.svg';
 
 interface IProps {
-  setRaiting: Dispatch<SetStateAction<number>>;
-  imageId: string;
+  setRaiting?: Dispatch<SetStateAction<number>>;
+  imageId?: string;
+  rating?: number;
 }
 
 export const RatingStars: React.FC<IProps> = (props: IProps) => {
@@ -27,8 +28,20 @@ export const RatingStars: React.FC<IProps> = (props: IProps) => {
     setStars([false, false, false, false, false]);
   }, [props.imageId]);
 
+  const setStatic = (number: number) => {
+    const result = [];
+    for (let i = 0; i < number; i++) {
+      result[i] = true;
+    }
+    setStars(result);
+  };
+
+  useEffect(() => {
+    setStatic(props.rating);
+  }, [props.rating]);
+
   return (
-    <div className="rating-star">
+    <div className="rating-star" style={{ pointerEvents: props.rating ? 'none' : 'auto' }}>
       <img
         onClick={() => {
           clickHandler(1);

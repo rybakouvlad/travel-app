@@ -1,11 +1,40 @@
-.raiting-set-wrapper {
-  display: flex;
+.wrapper-raiting {
 }
 
+.raiting-set-wrapper {
+  display: flex;
+  .rating-input {
+    width: 100%;
+    margin: 0 15px;
+  }
+}
+.all-rating {
+  margin-top: 10px;
+  background-color: #73afba;
+}
 .rating-star {
   display: flex;
   img {
     width: 50px;
     height: 50px;
+  }
+}
+
+.all-rating-wrapper {
+  max-height: 600px;
+  overflow: scroll;
+  margin: 0 15px;
+}
+
+.card-raiting {
+  display: flex;
+  justify-content: space-between;
+  .card-ratting-login {
+    .img-out {
+      border: solid 3px rgb(83, 90, 90);
+    }
+    span {
+      margin-left: 10px;
+    }
   }
 }

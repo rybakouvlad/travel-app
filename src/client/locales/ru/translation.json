@@ -9,6 +9,9 @@
   "Profile_upload_window": "Окно загрузки картинки в профиль",
   "Click to select a file": "Нажмите для выбора файла",
   "Select a file": "Выбрать файл",
-  "Download": "Загрузить",  
-  "Close": "Закрыть" 
+  "Download": "Загрузить",
+  "Close": "Закрыть",
+  "No comments and ratings": "Без комментариев и оценок",
+  "Your comment": "Ваш комментарий",
+  "Add": "Добавить"  
 }

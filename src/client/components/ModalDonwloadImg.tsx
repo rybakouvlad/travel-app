@@ -30,7 +30,6 @@ export const ModalDonwloadImg: React.FC<IProps> = (props: IProps) => {
   const loadHandler = (event: Event<HTMLInputElement>) => {
     if (event.target.files[0].type === 'image/jpeg') {
       setImgFile({ imgFile, ...event });
-      console.log(imgFile);
     } else {
       setToastMessage('Type does not fit. Need jpg.');
       setShowToast(true);
@@ -38,8 +37,6 @@ export const ModalDonwloadImg: React.FC<IProps> = (props: IProps) => {
   };
 
   const sendFile = (event: Event<HTMLInputElement>, header: authToke) => {
-    console.log(event.target.files[0]);
-
     superagent
       .post('http://127.0.0.1:3333/api/auth/upload')
       .attach('file', event.target.files[0])

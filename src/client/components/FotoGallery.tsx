@@ -62,8 +62,6 @@ export const FotoGallery: React.FC<IProps> = (props: IProps) => {
     centerPadding: '10px',
     infinite: true,
     beforeChange: (next: number, current: number) => {
-      console.log(current);
-
       setCurrentSlide(() => current);
     },
   };
