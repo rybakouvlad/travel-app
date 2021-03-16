@@ -3,6 +3,7 @@ import { Card, Image } from 'react-bootstrap';
 import { useHttp } from '../hooks/http.hook';
 import { RatingStars } from './RatingStars';
 import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
 
 interface IProps {
   imageId: string;
@@ -63,7 +64,7 @@ export const AllRaiting: React.FC<IProps> = (props: IProps) => {
                 </div>
 
                 <div className="card-raiting">
-                  {new Date(el.createdAt).toLocaleString('ru', {
+                  {new Date(el.createdAt).toLocaleString(i18next.language === 'by' ? 'be' : i18next.language, {
                     hour: 'numeric',
                     minute: 'numeric',
                     year: 'numeric',
