@@ -1,0 +1,10 @@
+.login-form-wrapper{
+  margin: 15px;
+  button{
+    background-color: $color-base;
+    border: none;
+    &:hover{
+      background-color: $color-logo;
+    }
+  }
+}

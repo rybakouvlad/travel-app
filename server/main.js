@@ -457,13 +457,11 @@ raiting_routers_router.post('/getAll', (req, res) => raiting_routers_awaiter(voi
         return res.json(raitings);
     }
     catch (e) {
-        console.log(e);
         return res.status(500).json({ message: 'Can not get raitings' });
     }
 }));
 raiting_routers_router.post('/set', auth_middleware, [(0,external_express_validator_namespaceObject.check)('comment', 'Enter comment.').exists()], (req, res) => raiting_routers_awaiter(void 0, void 0, void 0, function* () {
     try {
-        console.log(req.user._id);
         const errors = (0,external_express_validator_namespaceObject.validationResult)(req);
         if (!errors.isEmpty()) {
             return res.status(400).json({

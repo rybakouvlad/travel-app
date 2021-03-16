@@ -22,10 +22,10 @@ export const Currency: React.FC<IProps> = (props: IProps) => {
   }, [props.currency]);
 
   return (
-    <div>
-      <h1>
+    <div className="currency">
+      <span>
         {props.currency}: {usd} USD{' '}
-      </h1>
+      </span>
     </div>
   );
 };
