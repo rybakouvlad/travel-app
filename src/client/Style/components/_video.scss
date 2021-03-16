@@ -1,0 +1,12 @@
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+  position: relative;
+  padding-top: 56.25%;
+  .player {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

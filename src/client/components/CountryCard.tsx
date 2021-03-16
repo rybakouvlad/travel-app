@@ -5,6 +5,7 @@ import { FotoGallery } from './FotoGallery';
 import { ScrollToTop } from './ScrollToTop';
 import { Widgets } from './Widgets/Widgets';
 import { AboutCountry } from './AboutCountry';
+import { VideoComponent } from './VideoComponent';
 
 interface IParam {
   id: string;
@@ -38,6 +39,7 @@ export const CountryCard: React.FC = () => {
       />
       <AboutCountry country={country} />
       <FotoGallery alpha2={country.alpha2} />
+      <VideoComponent />
     </>
   );
 };

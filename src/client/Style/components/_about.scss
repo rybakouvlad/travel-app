@@ -18,6 +18,13 @@
     font-size: 18px;
     text-align: justify;
   }
+  img {
+    max-width: 1110px;
+    max-height: 450px;
+    width: 100%;
+    padding: 0 10px;
+    margin-bottom: 1rem;
+  }
 }
 
 @media (min-width: 450px) and (max-width: 520px) {
@@ -40,5 +47,4 @@
       font-size: 16px;
     }
   }
-
 }
