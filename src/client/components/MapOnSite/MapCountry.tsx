@@ -9,25 +9,37 @@ import * as mapData from './data/countriData.json';
 
 import { useParams } from 'react-router';
 
+// const nameCountry: string = 'FR'
+let countryIndex: number;
+
+const main=(id2:string):void=>{
+  mapData.features.forEach((element,index) => {
+    console.log(id2)
+    if(id2 === element.properties.ISO_A3){
+      // this.centr = [element.properties.capital[0],element.properties.capital[1]]
+      countryIndex = index
+      console.log(index)
+
+    }
+  })
+}
+interface IParam {
+  id: string;
+}
+
 export default function MapCountry() {
-  interface IParam {
-    id: string;
-  }
+  
   const { id } = useParams<IParam>();
-  console.log(id);
+  console.log("---------------------",id);
+  main(id)
 
   const geojsonFeature: any = {
-    type: 'Feature',
-    properties: {
-      name: 'Coors Field',
-      amenity: 'Baseball Stadium',
-      popupContent: 'This is where the Rockies play!',
-    },
     geometry: {
-      type: 'MultiPolygon',
-      coordinates: mapData.features[0].geometry.coordinates,
+      type: mapData.features[countryIndex].geometry.type,
+      coordinates: mapData.features[countryIndex].geometry.coordinates,
     },
   };
+
   const countryStyle: any = {
     fillColor: 'red',
     fillOpacity: 0.05,
@@ -42,13 +54,13 @@ export default function MapCountry() {
   const shirota: any = 0;
   const dolgota: any = 0;
   // const alpha: string = mapData.features[0].properties.centr
-  // console.log("----------------", mapData.features[0].properties.centr)
+  // console.log("----------------", mapData.features[countryIndex].geometry.type)
 
   return (
     <div className="mainMap">
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
       <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
-      <MapContainer className="mapContainer" center={[shirota, dolgota]} zoom={12} scrollWheelZoom={true}>
+      <MapContainer className="mapContainer" center={[shirota, dolgota]} zoom={3} scrollWheelZoom={true}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
