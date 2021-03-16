@@ -31,6 +31,8 @@
 @media (min-width: 320px) and (max-width: 449px) {
   .about-wrapper {
     .country-title {
+      flex-direction: column;
+      margin-left: 51px;
       font-size: 40px;
     }
 

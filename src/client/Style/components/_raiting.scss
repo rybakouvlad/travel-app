@@ -3,9 +3,19 @@
 
 .raiting-set-wrapper {
   display: flex;
+  flex-direction: column;
+  margin: 20px;
   .rating-input {
     width: 100%;
-    margin: 0 15px;
+    .input-group-append {
+      .btn{
+        border: none;
+        background-color: $color-base;
+        &:hover{
+          background-color: $color-logo;
+        }
+      }
+    }
   }
 }
 .all-rating {
@@ -22,8 +32,24 @@
 
 .all-rating-wrapper {
   max-height: 600px;
-  overflow: scroll;
-  margin: 0 15px;
+  overflow-y: auto;
+  margin: 10px 15px;
+  &::-webkit-scrollbar {
+    width: 6px;
+    margin-left: 3px;
+    background-color: rgba(255, 255, 255, 0);
+  }
+  &::-webkit-scrollbar-button {
+    display: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: rgba(115, 175, 186, 0.5);
+  }
+  .card-body{
+    padding: 1rem 0.2rem;
+  }
 }
 
 .card-raiting {
