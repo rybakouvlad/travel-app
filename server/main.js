@@ -243,7 +243,6 @@ router.post('/upload', auth_middleware, (req, res) => __awaiter(void 0, void 0, 
     catch (error) { }
 }));
 router.post('/getImg', auth_middleware, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(req.user);
     try {
         const user = yield Users.findOne({ _id: req.user._id });
         return res.json(user.filepath);
@@ -420,7 +419,70 @@ image_routers_router.post('/set', (req, res) => image_routers_awaiter(void 0, vo
 }));
 /* harmony default export */ const image_routers = (image_routers_router);
 
+;// CONCATENATED MODULE: ./src/server/models/Raiting.ts
+
+
+const RaitingSchema = new external_mongoose_namespaceObject.Schema({
+    rating: Number,
+    comment: String,
+    image: { type: external_mongoose_namespaceObject.Schema.Types.ObjectId, ref: 'Image' },
+    user: { type: external_mongoose_namespaceObject.Schema.Types.ObjectId, ref: 'User' },
+});
+const Raiting = external_mongoose_default().model('Raiting', RaitingSchema);
+/* harmony default export */ const models_Raiting = (Raiting);
+
+;// CONCATENATED MODULE: ./src/server/routers/raiting.routers.ts
+var raiting_routers_awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+
+
+
+
+const raiting_routers_router = (0,external_express_namespaceObject.Router)();
+raiting_routers_router.post('/getAll', (req, res) => raiting_routers_awaiter(void 0, void 0, void 0, function* () {
+    try {
+        console.log(req.body.imageId);
+        const raitings = yield models_Raiting.find({ image: req.body.imageId });
+        return res.json(raitings);
+    }
+    catch (e) {
+        return res.status(500).json({ message: 'Can not get raitings' });
+    }
+}));
+raiting_routers_router.post('/set', auth_middleware, [(0,external_express_validator_namespaceObject.check)('comment', 'Enter comment.').exists()], (req, res) => raiting_routers_awaiter(void 0, void 0, void 0, function* () {
+    try {
+        console.log(req.user._id);
+        const errors = (0,external_express_validator_namespaceObject.validationResult)(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({
+                errors: errors.array(),
+                message: 'Comment is incorrect.',
+            });
+        }
+        const raiting = new models_Raiting({
+            rating: req.body.raiting,
+            comment: req.body.comment,
+            image: req.body.imageId,
+            user: req.user._id,
+        });
+        yield raiting.save();
+        res.status(201).json({ message: 'Raiting created.' });
+    }
+    catch (error) {
+        res.status(500).json({ message: 'Something went wrong, try again.' });
+    }
+}));
+/* harmony default export */ const raiting_routers = (raiting_routers_router);
+
 ;// CONCATENATED MODULE: ./src/server/routers/export.routers.ts
+
 
 
 
@@ -429,6 +491,7 @@ const export_routers_router = (0,external_express_namespaceObject.Router)();
 export_routers_router.use('/country', country_routes);
 export_routers_router.use('/auth', auth_routers);
 export_routers_router.use('/image', image_routers);
+export_routers_router.use('/raiting', raiting_routers);
 /* harmony default export */ const export_routers = (export_routers_router);
 
 ;// CONCATENATED MODULE: external "body-parser"
