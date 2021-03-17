@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { useAuth } from '../context/auth.context';
+import { useAuth } from '../../context/auth.context';
 import { useTranslation } from 'react-i18next';
 import { OverlayTrigger, Popover, Image } from 'react-bootstrap';
-import { ModalDonwloadImg } from './ModalDonwloadImg';
-import { useHttp } from '../hooks/http.hook';
+import { ModalDonwloadImg } from '../ModalDonwloadImg';
+import { useHttp } from '../../hooks/http.hook';
 
 export const LogOutButton: React.FC = () => {
   const [modalShow, setModalShow] = React.useState(false);

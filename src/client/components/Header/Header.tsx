@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, Route, Switch, useRouteMatch } from 'react-router-dom';
-import { Home } from './Home';
-import { CountryCard } from './CountryCard';
-import Auth from './Auth/Auth';
-import { useAuth } from '../context/auth.context';
+import { Home } from '../Home';
+import { CountryCard } from '../CountryPage/CountryCard';
+import Auth from '../Auth/Auth';
+import { useAuth } from '../../context/auth.context';
 import { LogOutButton } from './LogOutButton';
 import { useTranslation } from 'react-i18next';
 import { LanguageSelection } from './LanguageSelection';

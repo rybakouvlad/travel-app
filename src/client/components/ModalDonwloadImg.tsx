@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Form, Modal, ProgressBar } from 'react-bootstrap';
-import { ToastCopmponent } from './ToastCopmponent';
+import { ToastCopmponent } from './Toast/ToastCopmponent';
 import superagent, { ResponseError, Response } from 'superagent';
 import { useAuth } from '../context/auth.context';
 import { useTranslation } from 'react-i18next';

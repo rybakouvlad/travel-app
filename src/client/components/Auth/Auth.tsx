@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { Badge, NavLink } from 'react-bootstrap';
 import Authorization from './Authorization';
 import Register from './Register';
-import { ToastCopmponent } from '../ToastCopmponent';
+import { ToastCopmponent } from '../Toast/ToastCopmponent';
 import { useTranslation } from 'react-i18next';
 export const Auth: FC = () => {
   const { t } = useTranslation();

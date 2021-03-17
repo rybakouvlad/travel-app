@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import Slider from 'react-slick';
-import { useHttp } from '../hooks/http.hook';
+import { useHttp } from '../../hooks/http.hook';
 import i18next from 'i18next';
-import { Raiting } from './Rating';
+import { Raiting } from '../Rating/Rating';
 const baseUrl = 'http://127.0.0.1:3333/assets/county';
 export interface IImg {
   name_ru: string;

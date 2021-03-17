@@ -3,7 +3,7 @@ import { useAuth } from '../../context/auth.context';
 import { useHttp } from '../../hooks/http.hook';
 import { Button, Form, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
-import { ToastError } from '../ToastError';
+import { ToastError } from '../Toast/ToastError';
 import { useTranslation } from 'react-i18next';
 export const Authorization: React.FC = () => {
   const { login } = useAuth();
