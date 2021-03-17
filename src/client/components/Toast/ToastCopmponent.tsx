@@ -18,8 +18,8 @@ export const ToastCopmponent: FC<IToast> = (props: IToast) => {
         <Toast
           style={{
             position: 'absolute',
-            bottom: 0,
-            right: 10,
+            bottom: 5,
+            right: 20,
           }}
           onClose={changeHandler}
           show={props.show}

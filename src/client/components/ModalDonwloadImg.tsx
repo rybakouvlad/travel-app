@@ -26,10 +26,12 @@ export const ModalDonwloadImg: React.FC<IProps> = (props: IProps) => {
   const [toastMessage, setToastMessage] = useState(null);
   const [isLoad, setIsLoad] = useState(false);
   const [loadPerCent, setLoadPerCent] = useState(0);
+  const [fileName, setFileName] = useState<string>(t('Click to select a file'));
 
   const loadHandler = (event: Event<HTMLInputElement>) => {
     if (event.target.files[0].type === 'image/jpeg') {
       setImgFile({ imgFile, ...event });
+      setFileName(event.target.files[0].name as string);
     } else {
       setToastMessage('Type does not fit. Need jpg.');
       setShowToast(true);
@@ -74,7 +76,6 @@ export const ModalDonwloadImg: React.FC<IProps> = (props: IProps) => {
 
   return (
     <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered className="modal-wrapper">
-      <div>{isLoad ? <ProgressBar now={loadPerCent} label={`${Math.trunc(loadPerCent)}%`} /> : null}</div>
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">{t('Profile_upload_window')}</Modal.Title>
       </Modal.Header>
@@ -82,14 +83,15 @@ export const ModalDonwloadImg: React.FC<IProps> = (props: IProps) => {
         <Form>
           <Form.File id="formcheck-api-custom" custom>
             <Form.File.Input isValid type="file" onChange={loadHandler} />
-            <Form.File.Label data-browse={t('Select a file')}>{t('Click to select a file')}</Form.File.Label>
-            {showToast ? <ToastCopmponent show={showToast} message={toastMessage} changeShow={changeShow} /> : null}
+            <Form.File.Label data-browse={t('Select a file')}>{fileName}</Form.File.Label>
           </Form.File>
         </Form>
       </Modal.Body>
       <Button className="btn-modal-donwload" onClick={submitFileHandler}>
         {t('Download')}
       </Button>
+      {showToast ? <ToastCopmponent show={showToast} message={toastMessage} changeShow={changeShow} /> : null}
+      <div>{isLoad ? <ProgressBar now={loadPerCent} label={`${Math.trunc(loadPerCent)}%`} /> : null}</div>
       <Modal.Footer>
         <Button onClick={() => props.onHide(false)}>{t('Close')}</Button>
       </Modal.Footer>
