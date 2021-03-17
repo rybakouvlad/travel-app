@@ -3,7 +3,6 @@ import { TileLayer } from 'react-leaflet';
 import { Marker, MapContainer } from 'react-leaflet';
 import { GeoJSON } from 'react-leaflet';
 import L from 'leaflet';
-// import { Feature } from 'geojson';
 
 import './MapCountry.css';
 import * as mapData from './data/countriData.json';
@@ -11,18 +10,12 @@ import * as countriesCapitals from './data/countriesCapitals.json';
 
 import { useParams } from 'react-router';
 
-// const nameCountry: string = 'FR'
 let countryIndex: number;
 
 const main=(id2:string):void=>{
   mapData.features.forEach((element,index) => {
-    console.log(id2)
     if(id2 === element.properties.ISO_A3){
-      // this.centr = [element.properties.capital[0],element.properties.capital[1]]
       countryIndex = index
-      console.log(index)
-      console.log("CAP:",countriesCapitals.features[countryIndex].properties.coord[0])
-
     }
   })
 }
@@ -33,7 +26,6 @@ interface IParam {
 export default function MapCountry() {
   
   const { id } = useParams<IParam>();
-  console.log("---------------------",id);
   main(id)
 
   const geojsonFeature: any = {
@@ -58,17 +50,12 @@ export default function MapCountry() {
 
   const orangeIcon: any = L.icon({
     iconUrl: "https://www.svgrepo.com/show/202744/maps-and-flags-pin.svg",
-    iconSize:     [38, 95], // size of the icon
+    iconSize:     [38, 95], 
   });
 
-  // console.log(countryStyle)
-  // const shirota: number = 10
-  // const shirota:any = mapData["pl"].centr[0]
-  // const dolgota:any = mapData["pl"].centr[1]
+
   const shirota: any = countriesCapitals.features[countryIndex].properties.coord[0];
   const dolgota: any = countriesCapitals.features[countryIndex].properties.coord[1];
-  // const alpha: string = mapData.features[0].properties.centr
-  console.log("----------------", mapData.features[countryIndex].geometry.type)
 
   return (
     <div className="mainMap">
