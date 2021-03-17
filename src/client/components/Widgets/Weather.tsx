@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
+import { Loader } from '../Loader';
 interface IProps {
   countryName: string;
 }
@@ -38,7 +39,7 @@ export const Weather: React.FC<IProps> = (props: IProps) => {
     getWeather();
   }, [props.countryName, i18next.language]);
   if (!props.countryName || !weather) {
-    return <h1>LOADING</h1>;
+    return <Loader />;
   }
   return (
     <div className="weather">

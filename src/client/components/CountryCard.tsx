@@ -6,6 +6,7 @@ import { ScrollToTop } from './ScrollToTop';
 import { Widgets } from './Widgets/Widgets';
 import { AboutCountry } from './AboutCountry';
 import { VideoComponent } from './VideoComponent';
+import { Loader } from './Loader';
 
 interface IParam {
   id: string;
@@ -26,7 +27,7 @@ export const CountryCard: React.FC = () => {
   }, [getCountry]);
 
   if (loading) {
-    return <h1>LOADIING</h1>;
+    return <Loader />;
   }
   return (
     <>

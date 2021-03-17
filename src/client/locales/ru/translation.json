@@ -14,5 +14,16 @@
   "No comments and ratings": "Без комментариев и оценок",
   "Your comment": "Ваш комментарий",
   "Add": "Добавить",
-  "Video": "Видео" 
+  "Video": "Видео",
+  "You are not":"Вы не ", 
+  "registred?": "зарегистрированы?",
+  "Do you have": "У вас есть ",
+  "a registration?": "регистрация?",
+  "Email address": "Адрес электронной почты",
+  "never share email":"Никогда не делись своей электронной почтой с кем-либо еще.",
+  "Password": "Пароль",
+  "Enter more than 6 symbols.":"Введите более 6 символов.",
+  "Enter login": "Введите логин",
+  "Register":"Зарегистрироваться",
+  "User was created.": "Пользователь был создан."
 }

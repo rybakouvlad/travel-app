@@ -4,6 +4,7 @@ import { useHttp } from '../hooks/http.hook';
 import { RatingStars } from './RatingStars';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import { Loader } from './Loader';
 
 interface IProps {
   imageId: string;
@@ -42,7 +43,7 @@ export const AllRaiting: React.FC<IProps> = (props: IProps) => {
   }, [props.imageId, props.refresh]);
 
   if (loading || !props.imageId || !comments) {
-    return <h1>Loading</h1>;
+    return <Loader />;
   }
 
   return (
