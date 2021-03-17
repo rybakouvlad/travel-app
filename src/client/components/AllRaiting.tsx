@@ -49,7 +49,7 @@ export const AllRaiting: React.FC<IProps> = (props: IProps) => {
   return (
     <div className="all-rating-wrapper">
       {comments.length === 0 ? (
-        <h1>{t('No comments and ratings')}</h1>
+        <h2>{t('No comments and ratings')}</h2>
       ) : (
         comments.map((el, index) => {
           return (

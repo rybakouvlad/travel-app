@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { ICountry, useCountry } from '../context/country.context';
 import { FotoGallery } from './FotoGallery';
-import MapCountry from "./MapOnSite/MapCountry"
+import MapCountry from './MapOnSite/MapCountry';
 import { ScrollToTop } from './ScrollToTop';
 import { Widgets } from './Widgets/Widgets';
 import { AboutCountry } from './AboutCountry';
 import { VideoComponent } from './VideoComponent';
 import { Loader } from './Loader';
-import { Map } from './Map';
 
 interface IParam {
   id: string;

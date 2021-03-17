@@ -12,21 +12,20 @@ import { useParams } from 'react-router';
 
 let countryIndex: number;
 
-const main=(id2:string):void=>{
-  mapData.features.forEach((element,index) => {
-    if(id2 === element.properties.ISO_A3){
-      countryIndex = index
+const main = (id2: string): void => {
+  mapData.features.forEach((element, index) => {
+    if (id2 === element.properties.ISO_A3) {
+      countryIndex = index;
     }
-  })
-}
+  });
+};
 interface IParam {
   id: string;
 }
 
 export default function MapCountry() {
-  
   const { id } = useParams<IParam>();
-  main(id)
+  main(id);
 
   const geojsonFeature: any = {
     type: 'Feature',
@@ -49,10 +48,9 @@ export default function MapCountry() {
   };
 
   const orangeIcon: any = L.icon({
-    iconUrl: "https://www.svgrepo.com/show/202744/maps-and-flags-pin.svg",
-    iconSize:     [38, 95], 
+    iconUrl: 'https://www.svgrepo.com/show/202744/maps-and-flags-pin.svg',
+    iconSize: [38, 95],
   });
-
 
   const shirota: any = countriesCapitals.features[countryIndex].properties.coord[0];
   const dolgota: any = countriesCapitals.features[countryIndex].properties.coord[1];
