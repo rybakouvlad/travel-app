@@ -2,6 +2,7 @@ import React from 'react';
 import { TileLayer } from 'react-leaflet';
 import { Marker, MapContainer } from 'react-leaflet';
 import { GeoJSON } from 'react-leaflet';
+import L from 'leaflet';
 // import { Feature } from 'geojson';
 
 import './MapCountry.css';
@@ -55,6 +56,11 @@ export default function MapCountry() {
     weight: 2,
   };
 
+  const orangeIcon: any = L.icon({
+    iconUrl: "https://www.svgrepo.com/show/202744/maps-and-flags-pin.svg",
+    iconSize:     [38, 95], // size of the icon
+  });
+
   // console.log(countryStyle)
   // const shirota: number = 10
   // const shirota:any = mapData["pl"].centr[0]
@@ -73,7 +79,7 @@ export default function MapCountry() {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[shirota, dolgota]}></Marker>
+        <Marker position={[shirota, dolgota]} icon={orangeIcon}></Marker>
         <GeoJSON style={countryStyle} data={geojsonFeature} />
       </MapContainer>
     </div>
