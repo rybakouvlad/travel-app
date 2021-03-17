@@ -6,6 +6,7 @@ import { GeoJSON } from 'react-leaflet';
 
 import './MapCountry.css';
 import * as mapData from './data/countriData.json';
+import * as countriesCapitals from './data/countriesCapitals.json';
 
 import { useParams } from 'react-router';
 
@@ -19,6 +20,7 @@ const main=(id2:string):void=>{
       // this.centr = [element.properties.capital[0],element.properties.capital[1]]
       countryIndex = index
       console.log(index)
+      console.log("CAP:",countriesCapitals.features[countryIndex].properties.coord[0])
 
     }
   })
@@ -34,6 +36,12 @@ export default function MapCountry() {
   main(id)
 
   const geojsonFeature: any = {
+    type: 'Feature',
+    properties: {
+      name: '',
+      amenity: '',
+      popupContent: '',
+    },
     geometry: {
       type: mapData.features[countryIndex].geometry.type,
       coordinates: mapData.features[countryIndex].geometry.coordinates,
@@ -51,16 +59,16 @@ export default function MapCountry() {
   // const shirota: number = 10
   // const shirota:any = mapData["pl"].centr[0]
   // const dolgota:any = mapData["pl"].centr[1]
-  const shirota: any = 0;
-  const dolgota: any = 0;
+  const shirota: any = countriesCapitals.features[countryIndex].properties.coord[0];
+  const dolgota: any = countriesCapitals.features[countryIndex].properties.coord[1];
   // const alpha: string = mapData.features[0].properties.centr
-  // console.log("----------------", mapData.features[countryIndex].geometry.type)
+  console.log("----------------", mapData.features[countryIndex].geometry.type)
 
   return (
     <div className="mainMap">
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
       <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
-      <MapContainer className="mapContainer" center={[shirota, dolgota]} zoom={3} scrollWheelZoom={true}>
+      <MapContainer className="mapContainer" center={[shirota, dolgota]} zoom={10} scrollWheelZoom={true}>
         <TileLayer
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
