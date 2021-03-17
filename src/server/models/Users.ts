@@ -21,7 +21,6 @@ const UserSchema: Schema = new Schema(
     login: String,
     filepath: {
       type: String,
-      unique: true,
     },
   },
   {

@@ -42,6 +42,7 @@ router.post(
         email: postData.email,
         password: hashedPassword,
         login: postData.login,
+        filepath: 'new_user.png',
       });
       console.log(req.body);
       await user.save();
