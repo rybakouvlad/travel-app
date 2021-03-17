@@ -20,7 +20,7 @@ export const Header: React.FC = () => {
           <nav>
             <Link to="/" className="logo-link">
               <div className="logo-wrapper">
-                <img src="http://127.0.0.1:3333/assets/logo.svg" alt="travel around the world" />
+                <img src={`${process.env.PATH_LOCAL}/assets/logo.svg`} alt="travel around the world" />
                 <p>Travel around the world</p>
               </div>
             </Link>

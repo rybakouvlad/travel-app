@@ -58,7 +58,7 @@ export const AllRaiting: React.FC<IProps> = (props: IProps) => {
                 <div className="card-ratting-login">
                   <Image
                     className="img-out"
-                    src={`http://127.0.0.1:3333/assets/users/${el.user.filepath}`}
+                    src={`${process.env.PATH_LOCAL}/assets/users/${el.user.filepath}`}
                     roundedCircle
                   />
                   <span>{el.user.login} </span>

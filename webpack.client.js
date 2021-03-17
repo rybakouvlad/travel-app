@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const webpackConfig = require('./webpack.config');
 const ESLintPlugin = require('eslint-webpack-plugin');
-// const Dotenv = require('dotenv-webpack');
+const Dotenv = require('dotenv-webpack');
 const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = (env, argv) => {
@@ -73,7 +73,7 @@ module.exports = (env, argv) => {
         ],
       }),
       // new WebpackNotifierPlugin({ alwaysNotify: false }),
-      // new Dotenv(),
+      new Dotenv(),
     ],
     entry: {
       main: './src/client/Client.tsx',

@@ -38,7 +38,7 @@ export const ModalDonwloadImg: React.FC<IProps> = (props: IProps) => {
 
   const sendFile = (event: Event<HTMLInputElement>, header: authToke) => {
     superagent
-      .post('http://127.0.0.1:3333/api/auth/upload')
+      .post(`${process.env.PATH_LOCAL}/api/auth/upload`)
       .attach('file', event.target.files[0])
       .on('progress', (event) => {
         if (!isLoad) {

@@ -12,7 +12,7 @@ header {
     align-items: flex-end;
     width: inherit;
     height: auto;
-    background: url('http://127.0.0.1:3333/assets/pexels-h-emre-773471 1.png');
+    background: url('http://178.124.178.250:3333/assets/pexels-h-emre-773471 1.png');
     nav {
       position: absolute;
       top: 15px;
@@ -60,7 +60,7 @@ header {
         height: 48px;
         width: 30px;
         margin-right: 10px;
-        background: url("http://127.0.0.1:3333/assets/close-24px.svg");
+        background: url('http://178.124.178.250:3333/assets/close-24px.svg');
         background-repeat: no-repeat;
         background-color: white;
         background-position-x: center;
@@ -68,7 +68,7 @@ header {
         border-color: white;
 
         &:hover {
-          background: url("http://127.0.0.1:3333/assets/close-red-24px.svg");
+          background: url('http://178.124.178.250:3333/assets/close-red-24px.svg');
           background-repeat: no-repeat;
           background-color: white;
           background-position-x: center;
@@ -88,7 +88,7 @@ header {
       width: 60px;
       margin: 0;
       padding: 0;
-      background: url("http://127.0.0.1:3333/assets/search-24px.svg");
+      background: url('http://178.124.178.250:3333/assets/search-24px.svg');
       background-size: 50px 50px;
       background-repeat: no-repeat;
       background-color: #dc3545;

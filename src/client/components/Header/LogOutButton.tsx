@@ -37,7 +37,7 @@ export const LogOutButton: React.FC = () => {
   return (
     <>
       <OverlayTrigger trigger="click" placement="bottom" overlay={popover}>
-        <Image className="img-out" src={`http://127.0.0.1:3333/assets/users/${path}`} roundedCircle />
+        <Image className="img-out" src={`${process.env.PATH_LOCAL}/assets/users/${path}`} roundedCircle />
       </OverlayTrigger>
       <ModalDonwloadImg show={modalShow} onHide={setModalShow} />
     </>

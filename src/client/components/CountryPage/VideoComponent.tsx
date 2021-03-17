@@ -16,9 +16,9 @@ export const VideoComponent: React.FC = () => {
       <div className="video-wrapper">
         <ReactPlayer
           className="player"
-          light={`http://127.0.0.1:3333/assets/county/main/${id}.jpg`}
+          light={`${process.env.PATH_LOCAL}/assets/county/main/${id}.jpg`}
           controls={true}
-          url={`http://127.0.0.1:3333/video/${id}.mp4`}
+          url={`${process.env.PATH_LOCAL}/video/${id}.mp4`}
           width="100%"
           height="100%"
         />

@@ -21,7 +21,12 @@ module.exports = (env) => {
         // Translates CSS into CommonJS
         'css-loader',
         // Compiles Sass to CSS
-        'sass-loader',
+        {
+          loader: 'sass-loader',
+          options: {
+            additionalData: '$env: ' + process.env.NODE_ENV + ';',
+          },
+        },
       ],
     },
     sassIsomorph: {

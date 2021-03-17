@@ -18,7 +18,7 @@ export const AboutCountry: React.FC<IProps> = ({ country }: IProps) => {
         <span>{country[`name_${i18next.language}`]}</span>
         <span>{country[`capital_${i18next.language}`]}</span>
       </div>
-      <img src={`http://127.0.0.1:3333/assets/county/main/${id}.jpg`} alt="" />
+      <img src={`${process.env.PATH_LOCAL}/assets/county/main/${id}.jpg`} alt="" />
       <p className="about-country-description">{country[`description_${i18next.language}`]}</p>
     </div>
   );

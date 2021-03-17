@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { ICountry, useCountry } from './../context/country.context';
 import i18next from 'i18next';
 
-const baseUrl = 'http://127.0.0.1:3333/assets/county';
+const baseUrl = `${process.env.PATH_LOCAL}/assets/county`;
 const maxPicturesNumber = 5;
 interface IHoverCountry {
   img: string;
