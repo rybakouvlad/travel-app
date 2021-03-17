@@ -106,10 +106,9 @@ module.exports = (env) => {
   }
 
   const resolve = {
-    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx', 'svg'],
     alias: {
       App: path.resolve(__dirname, 'src/client/App/'),
-      // Pages: path.resolve(__dirname, 'src/Pages/'),
     },
   };
 

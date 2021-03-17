@@ -65,7 +65,6 @@ const UserSchema = new external_mongoose_namespaceObject.Schema({
     login: String,
     filepath: {
         type: String,
-        unique: true,
     },
 }, {
     timestamps: true,
@@ -165,6 +164,7 @@ router.post('/register', [
             email: postData.email,
             password: hashedPassword,
             login: postData.login,
+            filepath: 'new_user.png',
         });
         console.log(req.body);
         yield user.save();
