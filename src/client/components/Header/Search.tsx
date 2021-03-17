@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, FormControl, InputGroup } from 'react-bootstrap';
-import { ICountry, useCountry } from '../context/country.context';
+import { ICountry, useCountry } from '../../context/country.context';
 import i18next from 'i18next';
 import { useHistory } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';

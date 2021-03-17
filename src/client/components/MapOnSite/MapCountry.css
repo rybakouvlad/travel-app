@@ -1,0 +1,21 @@
+.mapContainer{
+  position: relative;
+background-color: blueviolet;
+height: 500px;
+
+
+  border-radius: 2px;
+  padding: 2px;
+
+  z-index: 99999;
+  display: block;
+}
+
+
+.mainMap{
+  display: block;
+  /* position: relative; */
+  /* height: 800px; */
+  max-width: 1200px;
+  /* background-color: blueviolet; */
+}

@@ -1,6 +1,6 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import starEmpty from '../assets/star_empty.svg';
-import starFull from '../assets/star_full.svg';
+import starEmpty from '../../assets/star_empty.svg';
+import starFull from '../../assets/star_full.svg';
 
 interface IProps {
   setRaiting?: Dispatch<SetStateAction<number>>;

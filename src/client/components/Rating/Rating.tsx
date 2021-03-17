@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AllRaiting } from './AllRaiting';
-import { IImg } from './FotoGallery';
-import { Loader } from './Loader';
+import { IImg } from '../CountryPage/FotoGallery';
+import { Loader } from '../Loader';
 import { SetRaiting } from './SetRaiting';
 interface IProps {
   slide: IImg;

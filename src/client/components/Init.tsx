@@ -1,6 +1,6 @@
 import React from 'react';
 import { Footer } from './Footer';
-import { Header } from './Header';
+import { Header } from './Header/Header';
 
 import { useCountry } from '../context/country.context';
 import { Loader } from './Loader';

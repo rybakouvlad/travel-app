@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Card, Image } from 'react-bootstrap';
-import { useHttp } from '../hooks/http.hook';
+import { useHttp } from '../../hooks/http.hook';
 import { RatingStars } from './RatingStars';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
-import { Loader } from './Loader';
+import { Loader } from '../Loader';
 
 interface IProps {
   imageId: string;
@@ -49,7 +49,7 @@ export const AllRaiting: React.FC<IProps> = (props: IProps) => {
   return (
     <div className="all-rating-wrapper">
       {comments.length === 0 ? (
-        <h1>{t('No comments and ratings')}</h1>
+        <h2>{t('No comments and ratings')}</h2>
       ) : (
         comments.map((el, index) => {
           return (

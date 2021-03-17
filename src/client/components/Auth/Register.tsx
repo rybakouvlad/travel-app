@@ -1,7 +1,7 @@
 import React, { FC, useState, useEffect } from 'react';
 import { useHttp } from '../../hooks/http.hook';
 import { Button, Form, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { ToastError } from '../ToastError';
+import { ToastError } from '../Toast/ToastError';
 import { useTranslation } from 'react-i18next';
 
 interface ISet {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, FormControl, InputGroup } from 'react-bootstrap';
-import { useAuth } from '../context/auth.context';
-import { useHttp } from '../hooks/http.hook';
+import { useAuth } from '../../context/auth.context';
+import { useHttp } from '../../hooks/http.hook';
 import { RatingStars } from './RatingStars';
 import { useTranslation } from 'react-i18next';
 
