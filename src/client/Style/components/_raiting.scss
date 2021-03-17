@@ -8,10 +8,10 @@
   .rating-input {
     width: 100%;
     .input-group-append {
-      .btn{
+      .btn {
         border: none;
         background-color: $color-base;
-        &:hover{
+        &:hover {
           background-color: $color-logo;
         }
       }
@@ -47,7 +47,7 @@
     border-radius: 5px;
     background-color: rgba(115, 175, 186, 0.5);
   }
-  .card-body{
+  .card-body {
     padding: 1rem 0.2rem;
   }
 }
@@ -63,4 +63,15 @@
       margin-left: 10px;
     }
   }
+}
+.card-ratting-login {
+  display: flex;
+}
+
+@media (min-width: 320px) and (max-width: 669px) {
+  .card-ratting-login {
+    flex-direction: column;
+  }
+}
+.card-ratting-login {
 }
