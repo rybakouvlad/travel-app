@@ -32,7 +32,6 @@ export const Home: React.FC = () => {
 
   return (
     <>
-      {/*<div>*/}
       {isSearch ? (
         <div className="country-list">
           {suitableCountries.map((el: ICountry, i) => {

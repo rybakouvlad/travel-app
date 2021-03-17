@@ -30,6 +30,10 @@ module.exports = (env, argv) => {
             from: './src/server/assets/img',
             to: './assets/img',
           },
+          {
+            from: './src/server/assets/video',
+            to: './assets/video',
+          },
         ],
       }),
     ],

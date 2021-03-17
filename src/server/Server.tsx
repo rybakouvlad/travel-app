@@ -13,5 +13,5 @@ server.use(fileUpload());
 server.use('/api', routers);
 
 server.use('/assets', express.static('./server/assets/img'));
-
+server.use('/video', express.static('./server/assets/video'));
 server.listen(process.env.SERVER_PORT, () => console.log(`Listening on port ${process.env.SERVER_PORT}`));

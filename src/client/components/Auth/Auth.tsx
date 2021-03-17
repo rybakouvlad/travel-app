@@ -3,10 +3,10 @@ import { Badge, NavLink } from 'react-bootstrap';
 import Authorization from './Authorization';
 import Register from './Register';
 import { ToastCopmponent } from '../ToastCopmponent';
+import { useTranslation } from 'react-i18next';
 export const Auth: FC = () => {
+  const { t } = useTranslation();
   const [textHelp, setTextHelp] = useState({
-    help: 'You are not ',
-    status: 'registred?',
     isStatus: false,
   });
   const [showToast, setShowToast] = useState(false);
@@ -20,14 +20,10 @@ export const Auth: FC = () => {
     }
     if (status) {
       setTextHelp({
-        help: 'You are not ',
-        status: 'registred?',
         isStatus: false,
       });
     } else {
       setTextHelp({
-        help: 'Do you have a ',
-        status: 'registration?',
         isStatus: true,
       });
     }
@@ -42,13 +38,13 @@ export const Auth: FC = () => {
       {textHelp.isStatus ? <Register changeStatus={changeStatus} /> : <Authorization />}
 
       <h6>
-        {textHelp.help}{' '}
+        {textHelp.isStatus ? t('Do you have') : t('You are not')}{' '}
         <Badge as={NavLink} variant="dark" onClick={changeHandler}>
-          {textHelp.status}
+          {textHelp.isStatus ? t('a registration?') : t('registred?')}
         </Badge>
       </h6>
 
-      {showToast ? <ToastCopmponent show={showToast} message={'User was created.'} changeShow={changeShow} /> : null}
+      {showToast ? <ToastCopmponent show={showToast} message={t('User was created.')} changeShow={changeShow} /> : null}
     </div>
   );
 };

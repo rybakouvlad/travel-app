@@ -1,0 +1,21 @@
+.video-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+  position: relative;
+  padding-top: 56.25%;
+  .player {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+.video-text {
+  font-family: Roboto Condensed;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 130%;
+  margin-left: 2rem;
+}

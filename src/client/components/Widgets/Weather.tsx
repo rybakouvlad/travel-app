@@ -1,19 +1,23 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import i18next from 'i18next';
 import { useTranslation } from 'react-i18next';
+import { Loader } from '../Loader';
 interface IProps {
   countryName: string;
 }
 
+interface IWeather {
+  weatherIcon: any;
+  temperature: any;
+  description: any;
+  humidity: any;
+  weatherSpeed: any;
+}
+
 export const Weather: React.FC<IProps> = (props: IProps) => {
   const { t } = useTranslation();
-  const [weather, setWeather] = useState({
-    weatherIcon: '',
-    temperature: '',
-    description: '',
-    humidity: '',
-    weatherSpeed: '',
-  });
+  const [weather, setWeather] = useState<IWeather>();
+
   const getWeather = useCallback(async () => {
     try {
       const url = `https://api.openweathermap.org/data/2.5/weather?q=${props.countryName}&lang=${
@@ -34,11 +38,9 @@ export const Weather: React.FC<IProps> = (props: IProps) => {
   useEffect(() => {
     getWeather();
   }, [props.countryName, i18next.language]);
-
-  if (!props.countryName) {
-    return <h1>LOADING</h1>;
+  if (!props.countryName || !weather) {
+    return <Loader />;
   }
-
   return (
     <div className="weather">
       <div className="weather__container">

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AllRaiting } from './AllRaiting';
 import { IImg } from './FotoGallery';
+import { Loader } from './Loader';
 import { SetRaiting } from './SetRaiting';
 interface IProps {
   slide: IImg;
@@ -8,7 +9,7 @@ interface IProps {
 
 export const Raiting: React.FC<IProps> = (props: IProps) => {
   if (!props.slide) {
-    return <h1>Loading</h1>;
+    return <Loader />;
   }
   const [refreash, setRefreash] = useState(false);
   return (

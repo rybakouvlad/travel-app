@@ -4,8 +4,10 @@ import { useHttp } from '../../hooks/http.hook';
 import { Button, Form, Tooltip, OverlayTrigger } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { ToastError } from '../ToastError';
+import { useTranslation } from 'react-i18next';
 export const Authorization: React.FC = () => {
   const { login } = useAuth();
+  const { t } = useTranslation();
   const history = useHistory();
   const { loading, request, error, clearError } = useHttp();
   const [form, setForm] = useState({
@@ -39,20 +41,26 @@ export const Authorization: React.FC = () => {
   return (
     <Form>
       <Form.Group controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" name="email" value={form.email} onChange={changeHandler} />
-        <Form.Text className="text-dark">Well never share your email with anyone else.</Form.Text>
+        <Form.Label>{t('Email address')}</Form.Label>
+        <Form.Control
+          type="email"
+          placeholder={t('Email address')}
+          name="email"
+          value={form.email}
+          onChange={changeHandler}
+        />
+        <Form.Text className="text-dark">{t(t('never share email'))}</Form.Text>
       </Form.Group>
-      <Form.Label>Password</Form.Label>
+      <Form.Label>{t('Password')}</Form.Label>
       <Form.Group controlId="formBasicPassword">
         <OverlayTrigger
           key="top"
           placement="top"
-          overlay={<Tooltip id="tooltip-top">Enter more than 6 symbols.</Tooltip>}
+          overlay={<Tooltip id="tooltip-top">{t(t('never share email'))}</Tooltip>}
         >
           <Form.Control
             type="password"
-            placeholder="Password"
+            placeholder={t('Password')}
             name="password"
             value={form.password}
             onChange={changeHandler}
@@ -61,7 +69,7 @@ export const Authorization: React.FC = () => {
       </Form.Group>
 
       <Button variant="primary" type="submit" onClick={loginHandler} disabled={loading}>
-        Login
+        {t('login')}
       </Button>
       {registeredMessage ? (
         <ToastError message={registeredMessage} show={show} changeShow={changeShow} clearError={clearError} />

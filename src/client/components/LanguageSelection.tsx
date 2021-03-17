@@ -1,16 +1,26 @@
 import React from 'react';
-import { Form } from 'react-bootstrap';
+// import { Form } from 'react-bootstrap';
 import i18next from 'i18next';
+import Select from 'react-select';
+
+type OptionType = { label: string; value: string };
+
+const options: OptionType[] = [
+  { value: 'ru', label: 'ru' },
+  { value: 'by', label: 'by' },
+  { value: 'en', label: 'en' },
+];
 
 export const LanguageSelection: React.FC = () => {
-  const changeHandler = (event: React.ChangeEvent<HTMLSelectElement>): void => {
-    i18next.changeLanguage(event.target.value);
+  const changeHandler = (selected?: OptionType): void => {
+    i18next.changeLanguage(selected.value);
   };
   return (
-    <Form.Control className="lan_selector" as="select" onChange={changeHandler} defaultValue={i18next.language}>
-      <option value="ru">ru</option>
-      <option value="by">by</option>
-      <option value="en">en</option>
-    </Form.Control>
+    <Select
+      className="lan_selector"
+      defaultValue={{ value: i18next.language, label: i18next.language }}
+      onChange={changeHandler}
+      options={options}
+    />
   );
 };

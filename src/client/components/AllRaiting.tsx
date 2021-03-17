@@ -3,6 +3,8 @@ import { Card, Image } from 'react-bootstrap';
 import { useHttp } from '../hooks/http.hook';
 import { RatingStars } from './RatingStars';
 import { useTranslation } from 'react-i18next';
+import i18next from 'i18next';
+import { Loader } from './Loader';
 
 interface IProps {
   imageId: string;
@@ -41,7 +43,7 @@ export const AllRaiting: React.FC<IProps> = (props: IProps) => {
   }, [props.imageId, props.refresh]);
 
   if (loading || !props.imageId || !comments) {
-    return <h1>Loading</h1>;
+    return <Loader />;
   }
 
   return (
@@ -63,7 +65,7 @@ export const AllRaiting: React.FC<IProps> = (props: IProps) => {
                 </div>
 
                 <div className="card-raiting">
-                  {new Date(el.createdAt).toLocaleString('ru', {
+                  {new Date(el.createdAt).toLocaleString(i18next.language === 'by' ? 'be' : i18next.language, {
                     hour: 'numeric',
                     minute: 'numeric',
                     year: 'numeric',

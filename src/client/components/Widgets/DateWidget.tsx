@@ -3,6 +3,7 @@ import i18next from 'i18next';
 import 'moment-timezone';
 import moment from 'moment';
 import Moment from 'react-moment';
+import { Loader } from '../Loader';
 interface IProps {
   countryName: string;
   alpha2: string;
@@ -33,7 +34,7 @@ export const DateWidget: React.FC<IProps> = (props: IProps) => {
   }, [props]);
 
   if (zone.length === 0) {
-    return <h1>LOADING</h1>;
+    return <Loader />;
   }
   return (
     <div className="time-wrapper">

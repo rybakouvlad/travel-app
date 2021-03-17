@@ -530,6 +530,7 @@ server.use(external_body_parser_default().json());
 server.use(external_express_fileupload_default()());
 server.use('/api', export_routers);
 server.use('/assets', external_express_default().static('./server/assets/img'));
+server.use('/video', external_express_default().static('./server/assets/video'));
 server.listen("3333", () => console.log(`Listening on port ${"3333"}`));
 
 /******/ })()
