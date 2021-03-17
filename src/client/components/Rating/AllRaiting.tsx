@@ -5,7 +5,6 @@ import { RatingStars } from './RatingStars';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { Loader } from '../Loader';
-// import moment from 'moment';
 import Moment from 'react-moment';
 interface IProps {
   imageId: string;
