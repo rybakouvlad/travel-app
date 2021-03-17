@@ -5,7 +5,8 @@ import { RatingStars } from './RatingStars';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
 import { Loader } from '../Loader';
-
+// import moment from 'moment';
+import Moment from 'react-moment';
 interface IProps {
   imageId: string;
   refresh: boolean;
@@ -65,13 +66,7 @@ export const AllRaiting: React.FC<IProps> = (props: IProps) => {
                 </div>
 
                 <div className="card-raiting">
-                  {new Date(el.createdAt).toLocaleString(i18next.language === 'by' ? 'be' : i18next.language, {
-                    hour: 'numeric',
-                    minute: 'numeric',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric',
-                  })}
+                  <Moment format="hh:mm:ss DD MMMM YYYY" locale={i18next.language === 'by' ? 'be' : i18next.language} />
                 </div>
               </Card.Header>
               <Card.Body>
