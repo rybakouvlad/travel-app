@@ -53,6 +53,4 @@ export const AuthProvider: React.FC = ({ children }: IProps) => {
     setReady(true);
   }, [login]);
   return <AuthContext.Provider value={{ login, logout, token, userId, ready }}> {children} </AuthContext.Provider>;
-
-  //   return { login, logout, token, userId, ready };
 };

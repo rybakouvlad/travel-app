@@ -1,5 +1,4 @@
 import React from 'react';
-// import { Form } from 'react-bootstrap';
 import i18next from 'i18next';
 import Select from 'react-select';
 
