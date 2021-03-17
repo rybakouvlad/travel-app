@@ -73,7 +73,7 @@ export const ModalDonwloadImg: React.FC<IProps> = (props: IProps) => {
   };
 
   return (
-    <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+    <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered className="modal-wrapper">
       <div>{isLoad ? <ProgressBar now={loadPerCent} label={`${Math.trunc(loadPerCent)}%`} /> : null}</div>
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">{t('Profile_upload_window')}</Modal.Title>

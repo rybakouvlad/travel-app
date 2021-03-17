@@ -26,10 +26,12 @@ $slick-loader-path: '~slick-carousel/slick/';
 @import 'components/video';
 @import 'components/loader';
 @import 'components/map';
+@import 'components/modal';
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,400;1,600;1,700;1,900&display=swap');
 
 .main_wrapper {
   min-width: 320px;
   overflow: hidden;
+  min-height: 55vh;
 }

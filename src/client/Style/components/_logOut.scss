@@ -20,7 +20,19 @@
   }
 }
 
-.btn-modal-donwload{
-        width: fit-content;
+.modal-wrapper {
+  .btn-modal-donwload {
+    width: fit-content;
     margin-left: 1rem;
+  }
+  .btn-primary {
+    background-color: $color-base;
+    border: none;
+    &:hover {
+      background-color: $color-logo;
+    }
+  }
+  .custom-file-label {
+    border-color: #337c81 !important;
+  }
 }
