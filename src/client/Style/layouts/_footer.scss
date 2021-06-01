@@ -1,0 +1,31 @@
+footer {
+  height: 10vh;
+  background-color: $color-base;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  .year {
+    color: white;
+  }
+}
+
+.git_list {
+  display: flex;
+  margin: 0;
+  list-style: none;
+  flex-direction: column;
+  padding: 0;
+}
+
+.git_list > li {
+  margin: 0;
+}
+
+.git_list > li > a {
+  text-decoration: none;
+  color: white;
+}
+.rs_logo {
+  width: 50px;
+  height: 20px;
+}

@@ -1,0 +1,39 @@
+.img-out {
+  width: 50px;
+  height: 50px;
+  border: solid 3px cyan;
+  cursor: pointer;
+  :hover {
+    transform: scale(1.2);
+  }
+}
+.login-wrapper:hover {
+  transform: scale(1.2);
+}
+
+.menu-logout {
+  p {
+    cursor: pointer;
+  }
+  p:hover {
+    transform: scale(1.1);
+  }
+}
+
+.modal-wrapper {
+  .btn-modal-donwload {
+    width: fit-content;
+    margin-left: 1rem;
+  }
+  .btn-primary {
+    margin-bottom: 10px;
+    background-color: $color-base;
+    border: none;
+    &:hover {
+      background-color: $color-logo;
+    }
+  }
+  .custom-file-label {
+    border-color: #337c81 !important;
+  }
+}

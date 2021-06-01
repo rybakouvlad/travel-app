@@ -1,0 +1,69 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+      {
+        "type": "Feature",
+        "properties": {
+          "ADMIN": "Germany",
+          "ISO_A3": "de",
+          "coord": [52.516666666666666,13.400000]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "ADMIN": "Poland",
+          "ISO_A3": "pl",
+          "coord": [52.25,21.000000]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "ADMIN": "Austria",
+          "ISO_A3": "at",
+          "coord": [48.2,16.366667]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "ADMIN": "Georgia",
+          "ISO_A3": "ge",
+          "coord": [41.68333333333333,44.833333]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "ADMIN": "Italy",
+          "ISO_A3": "it",
+          "coord": [41.9,12.483333]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "ADMIN": "Montenegro",
+          "ISO_A3": "me",
+          "coord": [42.43333333333333,19.266667]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "ADMIN": "Iceland",
+          "ISO_A3": "ic",
+          "coord": [64.15,-21.950000]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "ADMIN": "Ireland",
+          "ISO_A3": "ie",
+          "coord": [53.31666666666667,-6.233333]
+        }
+      }
+    ]
+  }

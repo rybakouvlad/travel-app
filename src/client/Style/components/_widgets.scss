@@ -1,0 +1,71 @@
+@mixin widgetText {
+  font-size: 20px;
+  line-height: 130%;
+  color: #777777;
+  letter-spacing: 0.06em;
+}
+
+.time-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.widgets-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin-left: 5%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  @include widgetText;
+  background-color: rgba(115, 175, 186, 0.3);
+  border-radius: 10px;
+}
+
+.weather {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 15px;
+
+  .weather__container {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: space-between;
+    margin-left: 10px;
+
+    img {
+      width: 45px;
+    }
+  }
+
+  .weather__container div {
+    font-size: 14px;
+  }
+}
+
+.currency {
+  margin-left: 15px;
+}
+
+@media (min-width: 320px) and (max-width: 615px) {
+  .widgets-wrapper {
+    flex-wrap: wrap;
+
+    .currency {
+      width: 45%;
+    }
+
+    .time-wrapper {
+      width: 44%;
+    }
+
+    .weather {
+      width: 75%;
+      padding-left: 23%;
+      padding-top: 10px;
+    }
+  }
+}
